@@ -1,0 +1,75 @@
+<template>
+<hover-dialog>
+  <dynamic @tabChanged="handleTabChange">
+    <dynamic-item v-for="i in 10" :key="i"/>
+  </dynamic>
+</hover-dialog>
+</template>
+
+<script>
+import HoverDialog from 'Components/common/HoverDialog/HoverDialog'
+import Dynamic from 'Components/common/Dynamic/Dynamic'
+import DynamicItem from 'Components/common/Dynamic/DynamicItem'
+
+export default {
+  name: 'TimelineDialog',
+  components: {
+    HoverDialog,
+    Dynamic,
+    DynamicItem
+  },
+  data () {
+    return {
+      currentTab: 0
+    }
+  },
+  methods: {
+    handleTabChange (index) {
+      this.currentTab = index
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.timeline-dialog {
+  width: 370px;
+  height: 518px;
+  color: #000000;
+
+  .tabbar {
+    display: flex;
+    height: 49px;
+    box-shadow: 0 -1px 1px 1px rgba(0, 0, 0, 0.2);
+    padding-left: 20px;
+    justify-content: flex-start;
+    align-items: center;
+
+    .tabbar-item {
+      margin-right: 24px;
+      font-size: @font-size-small;
+      line-height: 16px;
+      color: #999999;
+      transition: all ease .3s;
+
+      &:hover {
+        color: @bilibili-blue;
+      }
+
+      &.tabbar-item__active {
+        background-color: @bilibili-blue;
+        color: @color-white;
+        padding: 4px 10px;
+        border-radius: 12px;
+        margin: 0 12px 0 -10px;
+      }
+    }
+  }
+
+  .content {
+    padding-top: 12px;
+    height: 469px;
+    overflow-y: scroll;
+  }
+}
+</style>

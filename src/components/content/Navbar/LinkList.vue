@@ -2,7 +2,6 @@
   <ul class="links">
     <li class="link-item">
       <a class="nav-link" href="#">
-        <!-- FIXME: 主站两个字字体偏小 -->
         <i class="bilifont bili-icon_dingdao_zhuzhan logo"></i>主站
       </a>
     </li>

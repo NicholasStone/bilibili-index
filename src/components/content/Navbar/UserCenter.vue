@@ -12,15 +12,11 @@
       </li>
       <li class="link-item">
         <a href="#">动态</a>
-        <hover-dialog style="display: none;">
-          <timeline-dialog />
-        </hover-dialog>
+        <user-dynamic />
       </li>
       <li class="link-item">
         <a href="#">收藏</a>
-        <hover-dialog>
-          <favorite />
-        </hover-dialog>
+        <user-favorite />
       </li>
       <li class="link-item">
         <a href="#">历史</a>
@@ -37,17 +33,16 @@
 
 <script>
 import Avatar from 'Components/common/Avatar/Avatar'
-import HoverDialog from 'Components/common/HoverDialog/HoverDialog'
-import TimelineDialog from './UserCenter/TimelineDialog'
-import Favorite from './UserCenter/Favorite'
+
+import UserDynamic from './UserCenter/UserDynamic'
+import UserFavorite from './UserCenter/UserFavorite'
 
 export default {
   name: 'UserCenter',
   components: {
     Avatar,
-    HoverDialog,
-    TimelineDialog,
-    Favorite
+    UserDynamic,
+    UserFavorite
   },
   data () {
     return {}
