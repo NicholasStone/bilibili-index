@@ -1,0 +1,19 @@
+.links {
+  flex: auto;
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+.links .link-item {
+  position: relative;
+  margin-right: 12px;
+  color: #ffffff;
+  vertical-align: center;
+  line-height: 30px;
+}
+.links .link-item i {
+  font-size: 18px;
+}
+.links .link-item .logo {
+  margin-right: 6px;
+}

@@ -1,0 +1,25 @@
+.warp {
+  width: 1630px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1870px) {
+  .warp {
+    width: 1414px;
+  }
+}
+@media screen and (max-width: 1654px) {
+  .warp {
+    width: 1198px;
+  }
+}
+@media screen and (max-width: 1438px) {
+  .warp {
+    width: 999px;
+  }
+}
+.w-100 {
+  width: 100%;
+}
+.h-100 {
+  height: 100%;
+}

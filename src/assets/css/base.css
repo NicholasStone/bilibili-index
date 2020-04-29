@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 li {
   text-decoration: none;
@@ -20,16 +21,20 @@ body {
   background: #ffffff;
   color: #212121;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 16px;
   width: 100vw;
   height: 100vh;
 }
 a {
-  color: #212121;
+  color: inherit;
   text-decoration: none;
 }
-i {
+i,
+img {
   vertical-align: bottom;
+}
+button {
+  border: none;
 }
 .clear-fix::after {
   clear: both;
