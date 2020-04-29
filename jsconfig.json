@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@/*":["src/"],
+      "Config/*": ["src/config/*"],
+      "Assets/*": ["src/assets/*"],
+      "Common/*": ["src/common/*"],
+      "Components/*": ["src/components/*"],
+      "Images/*": ["src/assets/Images"],
+    },
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src"]
+}

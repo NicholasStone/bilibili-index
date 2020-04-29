@@ -1,0 +1,61 @@
+@import "normalize.css";
+@import "bilifont.css";
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  user-select: none;
+  /* 禁止用户鼠标在页面上选中文字/图片等 */
+  -webkit-tap-highlight-color: transparent;
+  /* webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节 */
+  background: #ffffff;
+  color: #212121;
+  font-size: 14px;
+  line-height: 1.5;
+  width: 100vw;
+  height: 100vh;
+}
+a {
+  color: #212121;
+  text-decoration: none;
+}
+i {
+  vertical-align: bottom;
+}
+.clear-fix::after {
+  clear: both;
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.clear-fix {
+  zoom: 1;
+}
+/* 
+.arrow-right {
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  width: 9px;
+  height: 9px;
+  background-color: transparent;
+  transform: rotate(135deg);
+  display: inline-block;
+  margin-left: .1rem;
+} */
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
