@@ -1,0 +1,28 @@
+.blocking(@width:100%, @height: 100%, @display: block) {
+  display: @display;
+  width: @width;
+  height: @height;
+}
+
+.flexing(@wrap: nowrap, @justify: normal, @align-content:normal, @align-items: normal, @direction: row){
+  flex-wrap: @wrap;
+  justify-content: @justify;
+  align-content: @align-content;
+  align-items: @align-items;
+  flex-direction: @direction;
+}
+
+.line-breaking(@style: ellipsis) {
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.p-absoluting(@top: 0, @left: 0, @bottom: auto, @right: auto) {
+  position: absolute;
+  top: @top;
+  left: @left;
+  bottom: @bottom;
+  right: @right;
+}

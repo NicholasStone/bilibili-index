@@ -51,10 +51,10 @@ export default {
       display: block;
       height: 37px;
       font-weight: 500px;
+      line-height: normal;
       overflow: hidden;
       text-overflow: ellipsis;
       word-break: break-all;
-      line-height: normal;
     }
 
     .upper-name {

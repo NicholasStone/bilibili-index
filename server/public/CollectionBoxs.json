@@ -1,0 +1,204 @@
+{
+    "code": 0,
+    "message": "0",
+    "ttl": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "我创建的收藏夹",
+            "mediaListResponse": {
+                "count": 9,
+                "list": [
+                    {
+                        "id": 47986299,
+                        "fid": 479862,
+                        "mid": 22834699,
+                        "attr": 0,
+                        "title": "0x00",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/fb32db0f90d1dc0d2292576b0359e538cb4d8d22.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1462779663,
+                        "mtime": 1558244617,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 386
+                    },
+                    {
+                        "id": 787881899,
+                        "fid": 7878818,
+                        "mid": 22834699,
+                        "attr": 22,
+                        "title": "技术",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/d01ea785a626e2b4c466768eb01c7833a3ca2c89.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1577427128,
+                        "mtime": 1577427128,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 18
+                    },
+                    {
+                        "id": 932919299,
+                        "fid": 9329192,
+                        "mid": 22834699,
+                        "attr": 22,
+                        "title": "摄影",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/d065db4f4a496aba629ac4ef35c709c728dedddc.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1586101786,
+                        "mtime": 1586101786,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 1
+                    },
+                    {
+                        "id": 948982799,
+                        "fid": 9489827,
+                        "mid": 22834699,
+                        "attr": 22,
+                        "title": "什么傻吊",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/adb27c021976f63044ee341fbaabc97593106db0.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1587555382,
+                        "mtime": 1587555382,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 1
+                    },
+                    {
+                        "id": 785757099,
+                        "fid": 7857570,
+                        "mid": 22834699,
+                        "attr": 22,
+                        "title": "功能",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/00d2f9e09ef5d821634b885c5cf06f019b1ddaa6.png",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1577069430,
+                        "mtime": 1577069430,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 2
+                    },
+                    {
+                        "id": 801979699,
+                        "fid": 8019796,
+                        "mid": 22834699,
+                        "attr": 54,
+                        "title": "音乐",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/63a30dea630f6d687090747acb144552748916fa.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "喜欢的音乐",
+                        "ctime": 1579244061,
+                        "mtime": 1579244061,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 11
+                    },
+                    {
+                        "id": 132790499,
+                        "fid": 1327904,
+                        "mid": 22834699,
+                        "attr": 2,
+                        "title": "0x01",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/e8e01cc0e7c0a738fee36cc3f1fb16153414805e.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1500698550,
+                        "mtime": 1557559739,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 208
+                    },
+                    {
+                        "id": 166072599,
+                        "fid": 1660725,
+                        "mid": 22834699,
+                        "attr": 2,
+                        "title": "0x02",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/4cf508693b3289c760d452ffd72e0539633e1e9a.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1524839076,
+                        "mtime": 1555740153,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 19
+                    },
+                    {
+                        "id": 108798499,
+                        "fid": 1087984,
+                        "mid": 22834699,
+                        "attr": 2,
+                        "title": "0x2A",
+                        "cover": "https://dev.nichospace.com/apis/bfs/archive/e29b488e0fd7edf02fd3d50006acbb2689c04a49.jpg",
+                        "upper": {
+                            "mid": 22834699,
+                            "name": "",
+                            "face": ""
+                        },
+                        "cover_type": 2,
+                        "intro": "",
+                        "ctime": 1488986504,
+                        "mtime": 1555740153,
+                        "state": 0,
+                        "fav_state": 0,
+                        "media_count": 28
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "name": "稍后再看",
+            "mediaListResponse": {
+                "count": 91,
+                "list": null
+            }
+        }
+    ]
+}

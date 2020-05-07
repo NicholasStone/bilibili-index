@@ -1,0 +1,54 @@
+{
+    "code": 0,
+    "message": "0",
+    "ttl": 1,
+    "data": {
+        "isLogin": true,
+        "email_verified": 1,
+        "face": "http://i0.hdslb.com/bfs/face/1e4e803270680ed2b82a5d9f99955a150563c3f6.jpg",
+        "level_info": {
+            "current_level": 5,
+            "current_min": 10800,
+            "current_exp": 26723,
+            "next_exp": 28800
+        },
+        "mid": 22834699,
+        "mobile_verified": 1,
+        "money": 20.8,
+        "moral": 70,
+        "official": {
+            "role": 0,
+            "title": "",
+            "desc": "",
+            "type": -1
+        },
+        "officialVerify": {
+            "type": -1,
+            "desc": ""
+        },
+        "pendant": {
+            "pid": 996,
+            "name": "拉文克劳",
+            "image": "http://i1.hdslb.com/bfs/face/971b69742c60b93225d38eb4c99fc382e2e5eb44.png",
+            "expire": 0,
+            "image_enhance": "http://i1.hdslb.com/bfs/face/971b69742c60b93225d38eb4c99fc382e2e5eb44.png"
+        },
+        "scores": 0,
+        "uname": "Nicholas-",
+        "vipDueDate": 1600358400000,
+        "vipStatus": 1,
+        "vipType": 2,
+        "vip_pay_type": 0,
+        "vip_theme_type": 0,
+        "wallet": {
+            "mid": 22834699,
+            "bcoin_balance": 5,
+            "coupon_balance": 5,
+            "coupon_due_time": 0
+        },
+        "has_shop": false,
+        "shop_url": "",
+        "allowance_count": 0,
+        "answer_status": 0
+    }
+}

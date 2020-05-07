@@ -6,7 +6,7 @@
     <div class="cover"></div>
     <div class="warp bilibili-banner-blackboard">
       <a href="#" class="bilibili-logo">
-        <img :src="logoUrl">
+        <img src="~Assets/images/logo.png">
       </a>
       <a href="#" class="blackboard-title">
         {{ blackboardTitle }}
@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       background: 'https://i0.hdslb.com/bfs/archive/ed92db305ae43c7fc8a59b1789934caa2636b876.png',
-      logoUrl: 'https://i0.hdslb.com/bfs/archive/4de86ebf90b044bf9ba2becf042a8977062b3f99.png',
+      logoUrl: 'https://dev.nichospace.com/apis/bfs/archive/4de86ebf90b044bf9ba2becf042a8977062b3f99.png',
       blackboardTitle: '辣妹儿~，法克儿~'
     }
   },

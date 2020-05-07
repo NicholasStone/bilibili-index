@@ -1,79 +1,109 @@
 <template>
-  <div class="hover-dialog">
-    <slot></slot>
-  </div>
+  <keep-alive>
+  <transition name="slide-fade">
+    <div
+      v-if="show"
+      class="hover-dialog"
+      :class="{transparent: isTransparent }"
+      :style="position"
+    >
+      <div v-if="showArrow" class="arrow" :style="arrow"></div>
+      <slot></slot>
+    </div>
+  </transition>
+  </keep-alive>
 </template>
 
 <script>
+
 export default {
   name: 'HoverDialog',
   props: {
-    position: {
+    show: Boolean,
+    // dialog 位置
+    leftDistance: Number,
+    // 透明背景
+    isTransparent: {
+      type: Boolean,
+      default: false
+    },
+    // 和 navbar 的距离 （不算小三角）
+    top: {
+      type: Number,
+      default: 47,
+      validator: val => !isNaN(parseInt(val))
+    },
+    // 是否显示小三角
+    showArrow: {
+      type: Boolean,
+      default: true
+    },
+    // 小三角位置
+    arrowPosition: {
       type: String,
       default: 'center'
     },
-    left: Number,
-    top: Number
+    // 小三角偏移量
+    arrowLeftDistance: {
+      type: Number,
+      default: 0
+    }
+  },
+  computed: {
+    arrow () {
+      const left = this.arrowLeftDistance ? this.arrowLeftDistance + 'px' : '50%'
+      return {
+        top: `${47 - parseInt(this.top) - 5}px`,
+        left
+      }
+    },
+    position () {
+      return {
+        left: this.leftDistance ? this.leftDistance + 'px' : '50%',
+        top: this.top + 'px'
+      }
+    }
+
   }
 }
 </script>
 
 <style lang="less" scoped>
+.transparent{
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 .hover-dialog {
   position: absolute;
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2) !important;
   border: none;
   border-radius: 2px;
   padding: 0;
-  top: 45px;
-  left: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
   transform: translateX(-50%);
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
 
-  &::before {
-    content: "";
+  .arrow {
     position: absolute;
     width: 10px;
     height: 10px;
-    top: -5px;
-    left: 50%;
-    background: #ffffff;
+    border: 5px solid transparent;
+    border-top: 5px solid #ffffff;
+    border-left: 5px solid #ffffff;
     transform: translateX(-50%) rotate(45deg);
   }
 }
 
-.timeline-dialog {
-  width: 370px;
-  height: 518px;
-  color: #000000;
-
-  .tabbar {
-    display: flex;
-    height: 49px;
-    box-shadow: 0 -1px 1px 1px rgba(0, 0, 0, 0.2);
-    padding-left: 20px;
-    justify-content: flex-start;
-    align-items: center;
-
-    .tabbar-item {
-      margin-right: 24px;
-      font-size: @font-size-small;
-      line-height: 16px;
-      color: #999999;
-
-      &:hover{
-        color: @bilibili-blue;
-      }
-
-      &.tabbar-item__active {
-        background-color: @bilibili-blue;
-        color: @color-white;
-        padding: 4px 10px;
-        border-radius: 12px;
-        margin-right: 12px;
-      }
-    }
-  }
+.slide-fade-enter-active {
+  transition: all .2s ease;
 }
+.slide-fade-leave-active {
+  transition: all .2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translate3d(-50%, -5px, 0);
+  opacity: 0;
+}
+
 </style>

@@ -1,39 +1,31 @@
 <template>
-  <div class="timeline-dialog">
-    <div class="tabbar w-100">
-      <div
-        class="tabbar-item"
-        v-for="({text, active}, index) in tabs"
-        :key="text"
-        :class="{'tabbar-item__active': currentTab === index}"
-        @click="handleClick(index)"
-      >{{ currentTab === index ? active : text }}</div>
-    </div>
-    <div class="w-100 h-100 content">
-      <slot />
-    </div>
-  </div>
+<dynamic @tabChanged="handleTabChange" :tabs="tabs">
+  <dynamic-item v-for="i in 10" :key="i"/>
+</dynamic>
 </template>
 
 <script>
+import Dynamic from 'Components/common/Dynamic/Dynamic'
+import DynamicItem from 'Components/common/Dynamic/DynamicItem'
+
 export default {
   name: 'TimelineDialog',
-  props: {
-    tabs: {
-      type: Array,
-      required: true,
-      validator: tabs => tabs.every(value => value.text && value.active)
-    }
+  components: {
+    Dynamic,
+    DynamicItem
   },
   data () {
     return {
-      currentTab: 0
+      currentTab: 0,
+      tabs: [
+        { text: '视频', active: '视频历史' },
+        { text: '专栏', active: '专栏历史' }
+      ]
     }
   },
   methods: {
-    handleClick (index) {
+    handleTabChange (index) {
       this.currentTab = index
-      this.$emit('tabChanged', index)
     }
   }
 }

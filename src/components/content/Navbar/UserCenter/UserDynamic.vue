@@ -1,26 +1,27 @@
 <template>
-<hover-dialog>
-  <dynamic @tabChanged="handleTabChange">
-    <dynamic-item v-for="i in 10" :key="i"/>
-  </dynamic>
-</hover-dialog>
+<dynamic @tabChanged="handleTabChange" :tabs="tabs">
+  <dynamic-item v-for="i in 10" :key="i"/>
+</dynamic>
 </template>
 
 <script>
-import HoverDialog from 'Components/common/HoverDialog/HoverDialog'
 import Dynamic from 'Components/common/Dynamic/Dynamic'
 import DynamicItem from 'Components/common/Dynamic/DynamicItem'
 
 export default {
   name: 'TimelineDialog',
   components: {
-    HoverDialog,
     Dynamic,
     DynamicItem
   },
   data () {
     return {
-      currentTab: 0
+      currentTab: 0,
+      tabs: [
+        { text: '视频', active: '视频动态' },
+        { text: '直播', active: '直播动态' },
+        { text: '专栏', active: '专栏动态' }
+      ]
     }
   },
   methods: {

@@ -29,6 +29,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+a.block {
+  display: block;
+}
 i,
 img {
   vertical-align: bottom;

@@ -1,4 +1,5 @@
 const path = require('path');
+const server = require('./server')
 
 module.exports = {
   pages: {
@@ -24,16 +25,17 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     port: '28001',
-    public: 'cloud.nichospace.com:28001',
-    before: (app) => {
-      app.get('/', (request, response) => {
-        response.write(`
-<a href='/index'> /index </a> <br>
-<a href='/history'> /history </a> <br>
-<a href='/timeline'> /timelint </a>
-        `);
-      });
-    },
+    public: 'http://dev.nichospace.com:28001',
+    disableHostCheck: true,
+    // proxy: {
+    //   '/apis': {
+    //     target: 'https://i0.hdslb.com',
+    //     pathRewrite: {'^/apis': ''},
+    //     changeOrigin: true,
+    //     agent: ''
+    //   },
+    // },
+    before: server
   },
   configureWebpack: {
     resolve: {
