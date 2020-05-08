@@ -1,17 +1,17 @@
 <template>
   <div class="content">
-    <user-overview />
+    <!-- <user-overview /> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import UserOverview from 'Components/content/Navbar/UserCenter/UserOverview'
+// import UserOverview from 'Components/content/Navbar/UserCenter/UserOverview'
 
 export default {
   name: 'Content',
   components: {
-    UserOverview
+    // UserOverview
   }
 }
 </script>

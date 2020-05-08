@@ -21,7 +21,7 @@ body {
   background: #ffffff;
   color: #212121;
   font-size: 14px;
-  line-height: 16px;
+  line-height: normal;
   width: 100vw;
   height: 100vh;
 }

@@ -82,6 +82,7 @@ export default {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   transform: translateX(-50%);
+  z-index: 10;
 
   .arrow {
     position: absolute;

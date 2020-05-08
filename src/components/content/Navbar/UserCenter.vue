@@ -1,7 +1,13 @@
 <template>
   <div class="user-center">
-    <div class="user-profile">
-      <avatar />
+    <div class="user-profile"
+      @mouseenter="handleMouseEnter('user-overview')"
+      @mouseleave="handleMouseLeave">
+      <avatar/>
+      <!-- showDialog('user-overview') -->
+      <hover-dialog :show-arrow="false" :top="44" :show="showDialog('user-overview')">
+        <user-overview/>
+      </hover-dialog>
     </div>
     <ul class="links">
       <li class="link-item">
@@ -53,6 +59,7 @@
 import HoverDialog from 'Components/common/HoverDialog/HoverDialog'
 import Avatar from 'Components/common/Avatar/Avatar'
 
+import UserOverview from './UserCenter/UserOverview'
 import UserDynamic from './UserCenter/UserDynamic'
 import UserFavorite from './UserCenter/UserFavorite'
 import UserHistory from './UserCenter/UserHistory'
@@ -65,6 +72,7 @@ export default {
   mixins: [HoverMixin],
   components: {
     HoverDialog,
+    UserOverview,
     UserDynamic,
     UserFavorite,
     UserHistory,
@@ -83,6 +91,7 @@ export default {
   justify-content: space-between;
 
   .user-profile {
+    position: relative;
     width: 36px;
     margin-right: 22px;
   }

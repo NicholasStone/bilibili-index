@@ -15,8 +15,8 @@ export default {
   name: 'App',
   components: {
     Banner,
-    ContentView,
-    Navbar
+    Navbar,
+    ContentView
   }
 }
 </script>
@@ -26,5 +26,7 @@ export default {
 .container {
   width: 100%;
   height: 100%;
+  // display: flex;
+  // .flexing(nowrap, center, center, center);
 }
 </style>
