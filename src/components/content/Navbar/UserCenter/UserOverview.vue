@@ -236,6 +236,7 @@ export default {
   min-height: 492px;
   position: relative;
   border: solid 1px transparent;
+  color: @color-text;
 
   .avatar-container{
     .blocking(60px, 60px);
@@ -250,6 +251,7 @@ export default {
       text-align: center;
       font-weight: 600;
       font-size: 16px;
+      line-height: normal;
     }
 
     .vip {
@@ -259,6 +261,7 @@ export default {
       border-radius: 2px;
       color: @color-white;
       font-size: @font-size-small;
+      line-height: @font-size-big;
       text-align: center;
     }
 

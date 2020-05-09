@@ -4,7 +4,12 @@
       <link-list />
     </div>
     <div class="navbar-content navbar-search-box">
-      <search-form />
+      <div class="search-box">
+        <search-form />
+      </div>
+      <a href="https://search.bilibili.com/" class="search-icon">
+        <i class="bilifont bili-icon_dingdao_sousuo"></i>
+      </a>
     </div>
     <div class="navbar-content navbar-user-center">
       <user-center />
@@ -70,14 +75,33 @@ export default {
   }
 
   .navbar-search-box {
-    min-width: 300px;
+    // min-width: 300px;
     max-width: 500px;
+    margin: 0 10px;
+    .search-box {
+      .blocking();
+      @media screen and (max-width: 1110px) {
+        display: none;
+      }
+    }
+    .search-icon {
+      display: none;
+      @media screen and (max-width: 1110px) {
+        .blocking(100%, 100%, flex);
+        align-items: center;
+        justify-content: flex-end;
+        // font-size: 20px !important;
+        .bilifont {
+          font-size: 20px;
+        }
+      }
+    }
   }
 
   .navbar-user-center {
     max-width: 450px;
     min-width: 450px;
-    margin-left: 20px;
+    // margin-left: 20px;
   }
 }
 </style>
