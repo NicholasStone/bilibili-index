@@ -56,6 +56,8 @@ export default {
   align-items: center;
   justify-content: space-between;
 
+  color: @color-white;
+
   .navbar-content {
     position: relative;
     display: flex;

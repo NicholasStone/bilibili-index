@@ -4,20 +4,22 @@
     <div
       v-if="show"
       class="hover-dialog"
-      :class="{transparent: isTransparent }"
-      :style="position"
-    >
+      :style="position">
       <div v-if="showArrow" class="arrow" :style="arrow"></div>
-      <slot></slot>
+      <div
+        class="content"
+        :class="{ transparent: isTransparent }">
+        <slot></slot>
+      </div>
     </div>
   </transition>
   </keep-alive>
 </template>
 
 <script>
-
+// const TOP_DEFAULT = 25
 export default {
-  name: 'HoverDialog',
+  name: 'PopupDialog',
   props: {
     show: Boolean,
     // dialog 位置
@@ -27,13 +29,6 @@ export default {
       type: Boolean,
       default: false
     },
-    // 和 navbar 的距离 （不算小三角）
-    top: {
-      type: Number,
-      default: 47,
-      validator: val => !isNaN(parseInt(val))
-    },
-    // 是否显示小三角
     showArrow: {
       type: Boolean,
       default: true
@@ -50,49 +45,55 @@ export default {
     }
   },
   computed: {
+    // 箭头位置
     arrow () {
-      const left = this.arrowLeftDistance ? this.arrowLeftDistance + 'px' : '50%'
       return {
-        top: `${47 - parseInt(this.top) - 5}px`,
-        left
+        left: this.arrowLeftDistance ? this.arrowLeftDistance + 'px' : '50%'
       }
     },
+    // 整体左边距
     position () {
       return {
-        left: this.leftDistance ? this.leftDistance + 'px' : '50%',
-        top: this.top + 'px'
+        left: this.leftDistance ? this.leftDistance + 'px' : '50%'
       }
     }
-
   }
 }
 </script>
 
 <style lang="less" scoped>
-.transparent{
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
 .hover-dialog {
   position: absolute;
+  top: 25px;
   border: none;
   border-radius: 2px;
-  padding: 0;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
+  padding-top: 20px;
+  background-color: transparent;
   transform: translateX(-50%);
   z-index: 10;
 
+  .content {
+    .blocking();
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+  }
+
   .arrow {
     position: absolute;
+    top: 15px;
     width: 10px;
     height: 10px;
     border: 5px solid transparent;
-    border-top: 5px solid #ffffff;
-    border-left: 5px solid #ffffff;
+    border: 5px solid #ffffff;
     transform: translateX(-50%) rotate(45deg);
+    z-index: 11;
   }
+}
+
+.transparent{
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .slide-fade-enter-active {

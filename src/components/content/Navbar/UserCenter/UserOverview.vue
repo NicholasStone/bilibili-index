@@ -241,24 +241,6 @@ export default {
     .blocking(60px, 60px);
     .p-absoluting(-30px, 88px);
     border-radius: 50%;
-
-    // .avatar-link{
-    //   .blocking();
-
-    //   img.avatar{
-    //     .blocking(60px, 60px);
-    //   }
-
-    //   img.avatar-decoration {
-    //     .blocking(102px, auto);
-    //     .p-absoluting(-21px);
-    //   }
-
-    //   .big-member {
-    //     .blocking(20px, 20px);
-    //     .p-absoluting(auto, auto, 0, 0);
-    //   }
-    // }
   }
 
   .overview{

@@ -28,13 +28,14 @@ export default {
 <style lang="less" scoped>
 .contribute-panel {
   .blocking(304px, 78px, flex);
+  color: @color-deeper-gray;
 
   .contribute-link {
     .blocking(76px, 100%, flex);
     .flexing(nowrap, space-evenly, center, center, column);
+    padding-top: 10px;
     .link-icon {
       font-size: 26px;
-      color: @color-deeper-gray;
     }
   }
 }

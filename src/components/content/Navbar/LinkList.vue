@@ -1,61 +1,44 @@
 <template>
-<nav>
-  <ul class="links">
-    <li class="link-item">
-      <a class="nav-link" href="#">
+<nav class="links">
+  <link-item :disable-popout="true">
+    <template v-slot:link>
+      <a class="nav-link" href="/">
         <i class="bilifont bili-icon_dingdao_zhuzhan logo"></i>主站
       </a>
-    </li>
-    <li class="link-item">
+    </template>
+  </link-item>
+  <link-item :disable-popout="true">
+    <template v-slot:link>
       <a class="nav-link" href="#">番剧</a>
-    </li>
-    <li class="link-item"
-      @mouseenter="handleMouseEnter('game-center')"
-      @mouseleave="handleMouseLeave"
-    >
-      <a class="nav-link" href="#">游戏中心</a>
-      <hover-dialog :left-distance="190" :arrow-left-distance="72" :show="showDialog('game-center')">
-        <game-center />
-      </hover-dialog>
-    </li>
-    <li class="link-item"
-      @mouseenter="handleMouseEnter('lives')"
-      @mouseleave="handleMouseLeave"
-    >
-      <a class="nav-link" href="#">直播</a>
-      <hover-dialog :left-distance="190" :arrow-left-distance="86" :show="showDialog('lives')">
-        <lives />
-      </hover-dialog>
-    </li>
-    <li class="link-item">
-      <a class="nav-link" href="#">会员购</a>
-    </li>
-    <li class="link-item"
-      @mouseenter="handleMouseEnter('comics')"
-      @mouseleave="handleMouseLeave">
-      <a class="nav-link" href="#">漫画</a>
-      <hover-dialog :left-distance="205" :arrow-left-distance="70" :show="showDialog('comics')">
-        <comics />
-      </hover-dialog>
-    </li>
-    <li class="link-item">
-      <a class="nav-link" href="#">赛事</a>
-    </li>
-    <li class="link-item"
-      @mouseenter="handleMouseEnter('download-app')"
-      @mouseleave="handleMouseLeave">
-      <i class="bilifont bili-icon_dingdao_xiazaiapp"></i>
-      下载APP
-      <hover-dialog :is-transparent="true" :top="40" :show="showDialog('download-app')">
-        <download-app/>
-      </hover-dialog>
-    </li>
-  </ul>
+    </template>
+  </link-item>
+  <link-item :left-distance="190" :arrow-left-distance="72">
+    <template v-slot:link><a class="nav-link" href="#">游戏中心</a></template>
+    <template v-slot:dialog><game-center /></template>
+  </link-item>
+  <link-item :left-distance="190" :arrow-left-distance="86">
+    <template v-slot:link><a class="nav-link" href="#">直播</a></template>
+    <template v-slot:dialog><lives /></template>
+  </link-item>
+  <link-item :disable-popout="true">
+    <template v-slot:link><a class="nav-link" href="#">会员购</a></template>
+  </link-item>
+  <link-item :left-distance="205" :arrow-left-distance="70">
+    <template v-slot:link><a class="nav-link" href="#">漫画</a></template>
+    <template v-slot:dialog><comics /></template>
+  </link-item>
+  <link-item :disable-popout="true">
+    <template v-slot:link><a class="nav-link" href="#">赛事</a></template>
+  </link-item>
+  <link-item :is-transparent="true">
+    <template v-slot:link><i class="bilifont bili-icon_dingdao_xiazaiapp"></i>下载APP</template>
+    <template v-slot:dialog><download-app/></template>
+  </link-item>
 </nav>
 </template>
 
 <script>
-import HoverDialog from 'Components/common/HoverDialog/HoverDialog'
+import LinkItem from './common/LinkItem'
 
 import DownloadApp from './LinkList/DownloadApp'
 import GameCenter from './LinkList/GameCenter'
@@ -68,7 +51,7 @@ export default {
   name: 'LinkList',
   mixins: [HoverMixin],
   components: {
-    HoverDialog,
+    LinkItem,
     GameCenter,
     DownloadApp,
     Lives,

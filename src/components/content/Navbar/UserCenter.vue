@@ -1,69 +1,64 @@
 <template>
   <div class="user-center">
-    <div class="user-profile"
-      @mouseenter="handleMouseEnter('user-overview')"
-      @mouseleave="handleMouseLeave">
-      <avatar/>
-      <!-- showDialog('user-overview') -->
-      <hover-dialog :show-arrow="false" :top="44" :show="showDialog('user-overview')">
-        <user-overview/>
-      </hover-dialog>
-    </div>
-    <ul class="links">
-      <li class="link-item">
-        <a href="#">大会员</a>
-      </li>
-      <li class="link-item">
-        <a href="#">消息</a>
-      </li>
-      <li class="link-item"
-        @mouseenter="handleMouseEnter('user-dynamic')"
-        @mouseleave="handleMouseLeave">
-        <a href="#">动态</a>
-        <hover-dialog :show="showDialog('user-dynamic')">
-          <user-dynamic/>
-        </hover-dialog>
-      </li>
-      <li class="link-item"
-        @mouseenter="handleMouseEnter('user-favorite')"
-        @mouseleave="handleMouseLeave">
-        <a href="#">收藏</a>
-        <hover-dialog :show="showDialog('user-favorite')">
-          <user-favorite/>
-        </hover-dialog>
-      </li>
-      <li class="link-item"
-        @mouseenter="handleMouseEnter('user-history')"
-        @mouseleave="handleMouseLeave">
-        <a href="#">历史</a>
-        <hover-dialog :show="showDialog('user-history')">
-          <user-history/>
-        </hover-dialog>
-      </li>
-      <li class="link-item">
-        <a href="#">创作中心</a>
-      </li>
-    </ul>
-    <div class="contribute"
-      @mouseenter="handleMouseEnter('contribute')"
-      @mouseleave="handleMouseLeave">
-      <button class="w-100 h-100 contribute-btn">投稿</button>
-      <hover-dialog :left-distance="315" :arrow-left-distance="228" :show="showDialog('contribute')">
-        <user-contribute />
-      </hover-dialog>
-    </div>
+    <link-item class="user-profile" :show-arrow="false">
+      <template v-slot:link><avatar /></template>
+      <template v-slot:dialog><user-overview /></template>
+    </link-item>
+    <section class="links">
+      <link-item>
+        <template v-slot:link><a href="#">大会员</a></template>
+        <template v-slot:dialog><vip /></template>
+      </link-item>
+      <link-item>
+        <template v-slot:link>
+          <a href="#">消息</a>
+          <div class="bubble">
+            <num-bubble :num="unreadMessage" v-if="unreadMessage"/>
+          </div>
+        </template>
+        <template v-slot:dialog><user-message /></template>
+      </link-item>
+      <link-item>
+        <template v-slot:link>
+          <a href="#">动态</a>
+          <div class="bubble">
+            <num-bubble :num="unreadDynamic" v-if="unreadDynamic"/>
+          </div>
+        </template>
+        <template v-slot:dialog><user-dynamic /></template>
+      </link-item>
+      <link-item>
+        <template v-slot:link><a href="#">收藏</a></template>
+        <template v-slot:dialog><user-favorite /></template>
+      </link-item>
+      <link-item>
+        <template v-slot:link><a href="#">历史</a></template>
+        <template v-slot:dialog><user-history /></template>
+      </link-item>
+      <link-item :disable-popout="true">
+        <template v-slot:link><a href="#">创作中心</a></template>
+      </link-item>
+    </section>
+    <link-item class="contribute" :left-distance="-35" :arrow-left-distance="237">
+      <template v-slot:link><button class="w-100 h-100 contribute-btn">投稿</button></template>
+      <template v-slot:dialog><user-contribute /></template>
+    </link-item>
   </div>
 </template>
 
 <script>
-import HoverDialog from 'Components/common/HoverDialog/HoverDialog'
-import Avatar from 'Components/common/Avatar/Avatar'
+import Avatar from 'Components/common/Avatar'
+import NumBubble from 'Components/common/NumBubble'
+
+import LinkItem from './common/LinkItem'
 
 import UserOverview from './UserCenter/UserOverview'
 import UserDynamic from './UserCenter/UserDynamic'
 import UserFavorite from './UserCenter/UserFavorite'
 import UserHistory from './UserCenter/UserHistory'
 import UserContribute from './UserCenter/UserContribute'
+import UserMessage from './UserCenter/UserMessage'
+import Vip from './UserCenter/Vip'
 
 import HoverMixin from './hover-mixin'
 
@@ -71,13 +66,22 @@ export default {
   name: 'UserCenter',
   mixins: [HoverMixin],
   components: {
-    HoverDialog,
-    UserOverview,
+    LinkItem,
+    NumBubble,
     UserDynamic,
     UserFavorite,
     UserHistory,
     UserContribute,
-    Avatar
+    UserMessage,
+    Vip,
+    Avatar,
+    UserOverview
+  },
+  data () {
+    return {
+      unreadDynamic: 2,
+      unreadMessage: 200
+    }
   }
 }
 </script>
@@ -85,8 +89,12 @@ export default {
 <style lang="less" scoped>
 @import "~Assets/css/_navbar-links.less";
 
+.bubble {
+  .p-absoluting(-7px, auto, auto, -10px);
+}
+
 .user-center {
-  display: flex;
+  .blocking(100%, 100%, flex);
   align-items: center;
   justify-content: space-between;
 
@@ -97,11 +105,11 @@ export default {
   }
 
   .contribute {
-    flex: auto;
-    width: 100px;
+    margin-left: 14px;
     height: 100%;
 
     .contribute-btn {
+      width: 100px;
       background-color: @bilibili-pink;
       color: @color-white;
     }
