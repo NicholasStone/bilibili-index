@@ -1,12 +1,13 @@
 <template>
 <dynamic @tabChanged="handleTabChange" :tabs="tabs">
-  <dynamic-item v-for="i in 10" :key="i"/>
+  <dynamic-item v-for="item in videos" :key="item.bvid" :video="item" />
 </dynamic>
 </template>
 
 <script>
 import Dynamic from 'Components/common/Dynamic/Dynamic'
 import DynamicItem from 'Components/common/Dynamic/DynamicItem'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'TimelineDialog',
@@ -28,6 +29,14 @@ export default {
     handleTabChange (index) {
       this.currentTab = index
     }
+  },
+  computed: {
+    ...mapGetters('dynamic', [
+      'videos'
+    ])
+  },
+  created () {
+    this.$store.dispatch('dynamic/getDynamic')
   }
 }
 </script>

@@ -1,22 +1,22 @@
 <template>
   <div class="news-items w-100">
     <div class="avatar">
-      <avatar/>
+      <avatar :avatar-src="uploader.face"/>
     </div>
     <div class="news-content">
-    <span class="news-mate">
-      <a href="#" class="username">观察者网</a>
-      <span class="time">3分钟前</span>
-    </span>
+      <span class="news-mate">
+        <a href="#" class="username">{{ uploader.name }}</a>
+        <span class="time">{{ uploadTime }}</span>
+      </span>
       <span class="news-title">
-      <a href="#">全美死亡数超5.6万，福克斯主播：没想象中致命</a>
-    </span>
+        <a href="#">{{ videoTitle }}</a>
+      </span>
     </div>
     <div class="video">
       <a href="#" class="w-100 h-100">
-        <div class="video-cover">
+        <div class="video-cover w-100 h-100" :style="{background: `url(${videoCover}) center/contain no-repeat`}">
           <div class="watch-later"></div>
-          <div class="watch-later-taps"> 稍后再看</div>
+          <div class="watch-later-taps"> 稍后再看 </div>
         </div>
       </a>
     </div>
@@ -25,18 +25,30 @@
 
 <script>
 import Avatar from 'Components/common/Avatar/Avatar'
+import Time from 'Utils/time'
 
 export default {
   name: 'DynamicItem',
+  props: {
+    video: {
+      type: Object,
+      required: true
+    }
+  },
   components: {
     Avatar
+  },
+  computed: {
+    uploader () { return this.video.uploader },
+    uploadTime () { return Time(this.video.video.pubdate).fromNow() },
+    videoTitle () { return this.video.video.title },
+    videoCover () { return this.video.video.pic }
   }
 }
 </script>
 
 <style lang="less" scoped>
 .news-items {
-  height: 84px;
   display: flex;
   padding: 12px 20px;
 
@@ -55,7 +67,7 @@ export default {
     .news-mate,
     .news-title {
       display: block;
-      max-width: 200px;
+      width: 200px;
     }
 
     .news-mate {
@@ -78,19 +90,20 @@ export default {
 
   .video {
     width: 64px;
+    height: 36px;
 
     a {
       display: block;
+      border-radius: 4px;
     }
 
     .video-cover {
       position: relative;
       display: flex;
       width: 64px;
-      height: 36px;
-      background: center/contain url(~Assets/images/video-cover.jpg) no-repeat;
       justify-content: center;
       align-items: center;
+      border-radius: 4px;
 
       .watch-later {
         position: relative;
@@ -107,6 +120,7 @@ export default {
         padding: 6px 8px;
         background: rgba(0, 0, 0, .7);
         border-radius: 2px;
+        word-break: keep-all;
 
         font-size: @font-size-small;
         line-height: @font-size-small;

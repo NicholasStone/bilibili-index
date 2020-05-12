@@ -3,7 +3,7 @@
   <div class="hot-lives">
     <h3 class="live-title">热门直播:</h3>
     <div class="rooms">
-      <a class="room" v-for="{link, avatar, name} in rooms" :key="link" :href="link">
+      <a class="room" v-for="{link, avatar, name} in live.rooms" :key="link" :href="link">
         <img class="avatar" :src="avatar" :alt="name">
         <span class="hover-cover">LIVE</span>
         <span class="name">{{ name }}</span>
@@ -12,7 +12,7 @@
   </div>
   <div class="hot-events">
     <h3 class="live-title">热门活动:</h3>
-    <a class="event" v-for="{image, link} in hotEvents" :key="image" :href="link">
+    <a class="event" v-for="{image, link} in live.hotEvents" :key="image" :href="link">
       <img class="event-banner" :src="image">
     </a>
   </div>
@@ -20,53 +20,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Lives',
-  data () {
-    return {
-      rooms: [
-        {
-          link: 'https://live.bilibili.com/21870601',
-          avatar: 'https://dev.nichospace.com/apis/bfs/face/c3b920d17f57a1ec12a5b24224107cc85af262f0.jpg@100w_100h.webp',
-          name: '叶茂在线'
-        },
-        {
-          link: 'https://live.bilibili.com/21548396',
-          avatar: 'https://dev.nichospace.com/apis/bfs/face/d5f4003b198542002aa2de8b549e2b8e85cda3bc.jpg@100w_100h.webp',
-          name: '阿光爱画画'
-        },
-        {
-          link: 'https://live.bilibili.com/11775380',
-          avatar: 'https://dev.nichospace.com/apis/bfs/face/2b7d3f342f51c0ec45f183e2be84abea9ac9c7a9.jpg@100w_100h.webp',
-          name: '二次元绘画小妙屋'
-        },
-        {
-          link: 'https://live.bilibili.com/74000?visit_id=azq51tsnrcc0target=_blank',
-          avatar: 'https://dev.nichospace.com/apis/bfs/face/2f305afae61c7d9272e0c352282b89a303c76770.jpg@100w_100h.webp',
-          name: '爱吃肉的三水喵'
-        },
-        {
-          link: 'https://live.bilibili.com/21394728',
-          avatar: 'https://dev.nichospace.com/apis/bfs/face/17b82fe7b2adcab81754827212305c6c433704e7.jpg@100w_100h.webp',
-          name: 'ChanneLLean'
-        },
-        {
-          link: 'https://live.bilibili.com/268679',
-          avatar: 'https://dev.nichospace.com/apis/bfs/face/75bce68d7ad89c551b2f661eeadf3ee89d16338f.jpg@100w_100h.webp',
-          name: '琦妙-妙妙'
-        }
-      ],
-      hotEvents: [
-        {
-          image: 'https://dev.nichospace.com/apis/bfs/live/e9cf6b20810ac75447f99a7c00a423f135993100.jpg',
-          link: 'https://www.bilibili.com/blackboard/live/activity--5R5611BG.html'
-        },
-        {
-          image: 'https://dev.nichospace.com/apis/bfs/live/96c21315d7a50a68e3bc96cd4ffe44c7b7b9d73b.jpg',
-          link: 'https://www.bilibili.com/blackboard/live/activity-gyLzd_o3K.html'
-        }
-      ]
-    }
+  computed: {
+    ...mapGetters('navbar', ['live'])
   }
 }
 </script>

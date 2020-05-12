@@ -1,7 +1,9 @@
 <template>
   <div class="user-center">
     <link-item class="user-profile" :show-arrow="false">
-      <template v-slot:link><avatar /></template>
+      <template v-slot:link>
+        <avatar :vip="false" space-link="#"/>
+      </template>
       <template v-slot:dialog><user-overview /></template>
     </link-item>
     <section class="links">
@@ -61,6 +63,7 @@ import UserMessage from './UserCenter/UserMessage'
 import Vip from './UserCenter/Vip'
 
 import HoverMixin from './hover-mixin'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'UserCenter',
@@ -77,11 +80,8 @@ export default {
     Avatar,
     UserOverview
   },
-  data () {
-    return {
-      unreadDynamic: 2,
-      unreadMessage: 200
-    }
+  computed: {
+    ...mapGetters('navbar', ['unreadMessage', 'unreadDynamic'])
   }
 }
 </script>

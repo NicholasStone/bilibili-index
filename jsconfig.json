@@ -10,6 +10,9 @@
       "Common/*": ["src/common/*"],
       "Components/*": ["src/components/*"],
       "Images/*": ["src/assets/Images"],
+      "Utils/*": ["src/service/utils"],
+      "Network/*": ["src/service/Network"],
+      "Index/*": ["src/pages/index"]
     },
   },
   "exclude": ["node_modules", "dist"],

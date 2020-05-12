@@ -59,8 +59,10 @@ module.exports = {
         Assets: path.resolve(__dirname, 'src/assets'),
         Common: path.resolve(__dirname, 'src/common'),
         Components: path.resolve(__dirname, 'src/components'),
-        Network: path.resolve(__dirname, 'src/network'),
         Images: path.resolve(__dirname, 'src/assets/images'),
+        Network: path.resolve(__dirname, 'src/service/network'),
+        Utils: path.resolve(__dirname, 'src/service/utils'),
+        Index: path.resolve(__dirname, 'src/pages/index')
       },
     },
   },

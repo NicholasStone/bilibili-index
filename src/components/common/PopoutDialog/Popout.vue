@@ -17,7 +17,6 @@
 </template>
 
 <script>
-// const TOP_DEFAULT = 25
 export default {
   name: 'PopupDialog',
   props: {
@@ -36,7 +35,7 @@ export default {
     // 小三角位置
     arrowPosition: {
       type: String,
-      default: 'center'
+      default: 'top'
     },
     // 小三角偏移量
     arrowLeftDistance: {

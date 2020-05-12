@@ -2,17 +2,18 @@
   <div class="message-box">
     <a
       class="message hover-background-gray"
-      v-for="{title, link, count} in messageType"
-      :key="title"
+      v-for="{title, link, key} in messageType"
+      :key="key"
       :href="link">
       {{ title }}
-      <num-bubble v-if="count" :num="count"></num-bubble>
+      <num-bubble v-if="message[key]" :num="message[key]"></num-bubble>
     </a>
   </div>
 </template>
 
 <script>
 import NumBubble from 'Components/common/NumBubble/NumBubble'
+import { mapGetters } from 'vuex'
 export default {
   name: 'UserMessage',
   components: {
@@ -21,13 +22,16 @@ export default {
   data () {
     return {
       messageType: [
-        { title: '回复我的', link: 'https://message.bilibili.com/#/reply', count: 0 },
-        { title: '@我的', link: 'https://message.bilibili.com/#/at', count: 2 },
-        { title: '收到的赞', link: 'https://message.bilibili.com/#/love', count: 300 },
-        { title: '系统通知', link: 'https://message.bilibili.com/#/system', count: 0 },
-        { title: '我的消息', link: 'https://message.bilibili.com/#/whisper', count: 0 }
+        { key: 'replys', title: '回复我的', link: 'https://message.bilibili.com/#/reply' },
+        { key: 'ats', title: '@我的', link: 'https://message.bilibili.com/#/at' },
+        { key: 'loves', title: '收到的赞', link: 'https://message.bilibili.com/#/love' },
+        { key: 'system', title: '系统通知', link: 'https://message.bilibili.com/#/system' },
+        { key: 'whispers', title: '我的消息', link: 'https://message.bilibili.com/#/whisper' }
       ]
     }
+  },
+  computed: {
+    ...mapGetters('navbar', ['message'])
   }
 }
 </script>

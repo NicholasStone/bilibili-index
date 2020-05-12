@@ -1,14 +1,12 @@
 <template>
   <a :href="spaceLink" class="avatar-link" :style="avatarSize">
-    <img src="~Assets/images/avatar.jpg" class="avatar" :style="avatarSize">
-    <img v-if="decoration" src="~Assets/images/avatar-decoration.png" class="avatar-decoration">
-    <svg-icon v-if="decoration" class="big-member" icon="big-member"/>
+    <img :src="avatarSrc" class="avatar" :style="avatarSize">
+    <img :src="decorationSrc" v-if="decoration" class="avatar-decoration">
+    <svg-icon v-if="vip && vipIcon" class="big-member" :icon="vipIcon"/>
   </a>
 </template>
 
 <script>
-// TODO: 适配 vuex
-
 export default {
   name: 'Avatar',
   props: {
@@ -19,15 +17,27 @@ export default {
     size: {
       type: Number,
       default: 36
-    }
-  },
-  data () {
-    return {
-      avatarUrl: '',
-      spaceLink: 'https://space.bilibili.com/22834699',
-      avatarSrc: 'https://dev.nichospace.com/apis/bfs/face/1e4e803270680ed2b82a5d9f99955a150563c3f6.jpg@87w_88h_1c_100q.webp',
-      avatarDecorationSrc: 'https://dev.nichospace.com/apis/bfs/face/971b69742c60b93225d38eb4c99fc382e2e5eb44.png@127w_128h_1c_100q.webp',
-      bigMember: true
+    },
+    avatarSrc: {
+      type: String,
+      default: '//static.hdslb.com/images/akari.jpg'
+    },
+    decorationSrc: {
+      type: String,
+      default: ''
+    },
+    // 是否显示 vip 图标
+    vip: {
+      type: Boolean,
+      default: true
+    },
+    vipType: {
+      type: Number,
+      default: 0
+    },
+    spaceLink: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -36,7 +46,17 @@ export default {
         width: this.size + 'px',
         height: this.size + 'px'
       }
+    },
+    vipIcon () {
+      if (this.vipType) {
+        return 'big-member'
+      }
+      return ''
     }
+    // spaceLink () {
+    //   // TODO: 适配 webpage api
+    //   return `https://space.bilibili.com/${this.user_id}`
+    // }
   }
 }
 </script>

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'TimelineDialog',
+  name: 'Dynamic',
   props: {
     tabs: {
       type: Array,

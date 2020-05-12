@@ -10,7 +10,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user_id: 0
+    mid: 22834699,
+    lang: 'zh-CN'
   },
   mutations,
   actions,

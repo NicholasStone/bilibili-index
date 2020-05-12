@@ -1,13 +1,18 @@
 <template>
   <div class="user-overview">
     <section class="overview-wrap avatar-container">
-      <avatar :decoration="true" :size="60"/>
+      <avatar
+        :decoration="true"
+        :size="60"
+        :avatarSrc="avatar.face"
+        :decorationSrc="avatar.decoration"
+        :vipType="avatar.vip"/>
     </section>
     <section class="overview divide"
       @mouseenter="handleMouseEnter('notice')"
       @mouseleave="handleMouseLeave">
       <p class="username" :class="{'high-light-pink': vip}">{{ username }}</p>
-      <p class="vip" v-if="vip">{{ vipType }}</p>
+      <p class="vip" v-if="vip">{{ vipTypeText }}</p>
       <div class="overview-wrap exp-container">
         <div class="level-info">等级 {{level}} <small class="exp">{{ expStage }}</small></div>
         <a class="progress-bar">
@@ -110,6 +115,9 @@ import SvgIcon from 'Components/common/SvgIcon/SvgIcon'
 import Avatar from 'Components/common/Avatar/Avatar'
 import Entry from './UserOverview/Entry'
 import Hover from '../hover-mixin'
+import { mapGetters } from 'vuex'
+import { SET_LANG } from 'Index/store/mutation-types'
+
 export default {
   name: 'user-overview',
   mixins: [Hover],
@@ -120,15 +128,7 @@ export default {
   },
   data () {
     return {
-      username: 'Nicholas-',
-      level: 5,
-      exp: 26893,
-      coin: 21.8,
-      bCoin: 5,
-      following: 560,
-      followers: 7,
       dynamic_count: 215,
-      lang: 'zh-Hans',
       vip: 1,
       stage: [200, 1500, 4500, 10800, 28800],
       entries: [
@@ -166,7 +166,19 @@ export default {
     }
   },
   computed: {
-    vipType () {
+    ...mapGetters('user', [
+      'avatar', 'username', 'level', 'vipType', 'exp', 'coin', 'bCoin',
+      'following', 'followers'
+    ]),
+    lang: {
+      get () {
+        return this.$store.getters.lang
+      },
+      set (val) {
+        this.$store.commit(SET_LANG, val)
+      }
+    },
+    vipTypeText () {
       return ['大会员', '年度大会员'][this.vip]
     },
     expStage () {
@@ -180,7 +192,6 @@ export default {
         'zh-Hans': '简体中文',
         'zh-Hant': '繁體中文'
       }
-
       return lang[this.lang]
     }
   }

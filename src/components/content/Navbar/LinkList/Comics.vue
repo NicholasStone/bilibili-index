@@ -1,7 +1,7 @@
 <template>
   <div class="comic-frame clear-fix">
     <div class="hot-comics">
-      <a class="comic" v-for="{name, link, cover} in hotComics" :key="name" :href="link">
+      <a class="comic" v-for="{name, link, cover} in manga.hotComics" :key="name" :href="link">
         <img class="comic-cover" :src="cover">
         <span class="comic-name">{{ name }}</span>
       </a>
@@ -9,7 +9,7 @@
     <div class="popular-list">
       <h3 class="title">人气漫画</h3>
       <a class="list-item"
-        v-for="({link, title}, index) in comicList"
+        v-for="({link, title}, index) in manga.comicList"
         :key="title"
         :href="link"
         @mouseenter="showItemComicCover(index)"
@@ -25,64 +25,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'comics',
   data () {
     return {
-      hotComics: [
-        {
-          name: '刀剑神域 Alicization篇',
-          cover: 'http://i0.hdslb.com/bfs/manga-static/86a3e7b7511587ef14372203db5b852ee30ee182.jpg@272w',
-          link: 'https://manga.bilibili.com/detail/mc26566?refer_from=bili_main_nav'
-        },
-        {
-          name: '仙王的日常生活',
-          cover: 'http://i0.hdslb.com/bfs/manga-static/f8d219b09f4d89bf80fb7fef8264bf365a9352a0.jpg@272w',
-          link: 'https://manga.bilibili.com/detail/mc27661?refer_from=bili_main_nav'
-        },
-        {
-          name: '辉夜大小姐想让我告白 ~天才们的恋爱头脑战~',
-          cover: 'http://i0.hdslb.com/bfs/manga-static/776908c7e5841b346db4fd0dba43c335d50c9638.png@272w',
-          link: 'https://manga.bilibili.com/detail/mc26009?refer_from=bili_main_nav'
-        },
-        {
-          name: '石之海（乔乔的奇妙冒险第6部）',
-          cover: 'http://i0.hdslb.com/bfs/manga-static/d9ee84f8bab10116c9521d6344c520699a6968e1.jpg@272w',
-          link: 'https://manga.bilibili.com/detail/mc25451?refer_from=bili_main_nav'
-        }
-      ],
-      comicList: [
-        {
-          link: 'https://manga.bilibili.com/detail/mc26009?refer_from=bili_main_nav',
-          title: '辉夜大小姐想让我告白~天才们的恋爱头脑战~',
-          cover: 'https://i0.hdslb.com/bfs/manga-static/702828cfff2d0c71503a0f99539bef54f0993fd2.jpg@300w.jpg'
-        },
-        {
-          link: 'https://manga.bilibili.com/detail/mc25940?refer_from=bili_main_nav',
-          title: '反派初始化',
-          cover: 'https://i0.hdslb.com/bfs/manga-static/cb67bb80adc5d9312289b8566172067bd48ac3c5.jpg@300w.jpg'
-        },
-        {
-          link: 'https://manga.bilibili.com/detail/mc27491?refer_from=bili_main_nav',
-          title: '我的守护女友',
-          cover: 'https://i0.hdslb.com/bfs/manga-static/a3d41c30da4d438bc4e1dbe959c0f4cdd6d5df09.jpg@300w.jpg'
-        },
-        {
-          link: 'https://manga.bilibili.com/detail/mc26769?refer_from=bili_main_nav',
-          title: '天官赐福',
-          cover: 'https://i0.hdslb.com/bfs/manga-static/1cecbe6033d31cc9a49f4c1df88258a0abf72e07.jpg@300w.jpg'
-        },
-        {
-          link: 'https://manga.bilibili.com/detail/mc25717?refer_from=bili_main_nav',
-          title: '鬼灭之刃',
-          cover: 'https://i0.hdslb.com/bfs/manga-static/c937a55af0a114d4f57bfe266aba3e90fac6aaa2.jpg@300w.jpg'
-        },
-        {
-          link: 'https://manga.bilibili.com/detail/mc26446?refer_from=bili_main_nav',
-          title: '租借女友',
-          cover: 'https://i0.hdslb.com/bfs/manga-static/7c4fb47298080963a56acf812e57072aa747bea4.jpg@300w.jpg'
-        }
-      ],
       comicCover: -1
     }
   },
@@ -98,7 +45,8 @@ export default {
     comicCoverSrc () {
       if (this.comicCover < 0) return ''
       return this.comicList[this.comicCover].cover
-    }
+    },
+    ...mapGetters('navbar', ['manga'])
   }
 }
 </script>
@@ -123,6 +71,10 @@ export default {
 
       &-cover {
         .blocking(137px, 77px);
+      }
+
+      &-name {
+        color: @color-text;
       }
     }
   }

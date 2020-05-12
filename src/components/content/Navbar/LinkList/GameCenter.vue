@@ -2,14 +2,14 @@
   <div class="game-center clear-fix">
     <div class="game-panel">
       <div class="banner">
-        <a class="block" :href="banner.link">
+        <a class="block" :href="games.banner.link">
           <img class="banner-image" :src="banner.image" :alt="banner.name">
         </a>
       </div>
       <div class="recommend">
         <div
         class="recommend-game"
-        v-for="game in recommendGames"
+        v-for="game in games.recommend"
         :key="game.name"
         >
           <a class="block" :href="game.link">
@@ -23,7 +23,7 @@
       <ul class="new-games">
         <li
         class="new-game-item"
-        v-for="(game, index) in newGames"
+        v-for="(game, index) in games.newGames"
         :key="game.name"
         @mouseenter="handleGameItemHover(index)"
         @mouseleave="handleGameItemHover(-1)"
@@ -76,6 +76,9 @@ export default {
         return this.newGames[this.hoverdIndex].image
       }
       return null
+    },
+    games () {
+      return this.$store.getters['navbar/game']
     }
   }
 }
@@ -134,6 +137,8 @@ export default {
           margin:8px auto;
           line-height: 1;
           overflow: hidden;
+          color: @color-text;
+          .line-breaking()
         }
       }
     }
