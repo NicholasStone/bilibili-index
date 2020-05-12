@@ -1,6 +1,6 @@
 <template>
 <dynamic @tabChanged="handleTabChange" :tabs="tabs">
-  <dynamic-item v-for="i in 10" :key="i"/>
+  <dynamic-item v-for="item in videos" :key="item.bvid" :video="item"/>
 </dynamic>
 </template>
 

@@ -2,6 +2,7 @@
   <div class="container">
     <navbar />
     <banner/>
+    <main-menu />
     <content-view />
   </div>
 </template>
@@ -9,6 +10,7 @@
 <script>
 import Navbar from 'Components/content/Navbar'
 import Banner from 'Components/content/Banner'
+import MainMenu from 'Components/content/MainMenu'
 import ContentView from './views/ContentView'
 
 export default {
@@ -16,6 +18,7 @@ export default {
   components: {
     Banner,
     Navbar,
+    MainMenu,
     ContentView
   }
 }

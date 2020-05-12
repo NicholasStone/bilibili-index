@@ -1,19 +1,19 @@
-.warp {
+.wrap {
   width: 1630px;
   margin: 0 auto;
 }
 @media screen and (max-width: 1870px) {
-  .warp {
+  .wrap {
     width: 1414px;
   }
 }
 @media screen and (max-width: 1654px) {
-  .warp {
+  .wrap {
     width: 1198px;
   }
 }
 @media screen and (max-width: 1438px) {
-  .warp {
+  .wrap {
     width: 999px;
   }
 }
