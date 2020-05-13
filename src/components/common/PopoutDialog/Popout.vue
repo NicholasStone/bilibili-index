@@ -3,9 +3,14 @@
   <transition name="slide-fade">
     <div
       v-if="show"
-      class="hover-dialog"
-      :style="position">
-      <div v-if="showArrow" class="arrow" :style="arrow"></div>
+      class="popout"
+      :class="[{'popout--transform': !this.disableTransform}, `popout--${this.position}`]"
+      :style="containerPosition">
+      <div
+        v-if="showArrow"
+        class="arrow"
+        :class="`arrow--${position}`"
+        :style="arrow"></div>
       <div
         class="content"
         :class="{ transparent: isTransparent }">
@@ -22,7 +27,7 @@ export default {
   props: {
     show: Boolean,
     // dialog 位置
-    leftDistance: Number,
+    leftDistance: String,
     // 透明背景
     isTransparent: {
       type: Boolean,
@@ -32,44 +37,69 @@ export default {
       type: Boolean,
       default: true
     },
-    // 小三角位置
-    arrowPosition: {
+    // 组件与父组件的相对位置
+    position: {
       type: String,
-      default: 'top'
+      default: 'bottom',
+      validator: p => p === 'top' || p === 'bottom'
+    },
+    // 禁止使用 transform 移动主框
+    disableTransform: {
+      type: Boolean,
+      default: false
     },
     // 小三角偏移量
-    arrowLeftDistance: {
-      type: Number,
-      default: 0
-    }
+    arrowLeftDistance: String
   },
   computed: {
     // 箭头位置
     arrow () {
       return {
-        left: this.arrowLeftDistance ? this.arrowLeftDistance + 'px' : '50%'
+        left: this.arrowLeftDistance === undefined ? '50%' : this.arrowLeftDistance
       }
     },
-    // 整体左边距
-    position () {
+    /**
+     * 整体位置
+     */
+    containerPosition () {
       return {
-        left: this.leftDistance ? this.leftDistance + 'px' : '50%'
+        left: this.leftDistance === undefined ? '50%' : this.leftDistance
       }
+    },
+    popoutClass () {
+      return [
+        [`popout--${this.position}`],
+        {
+          'popout-transform': !this.disableTransform
+        }
+      ]
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.hover-dialog {
+.popout {
   position: absolute;
-  top: 25px;
   border: none;
   border-radius: 2px;
-  padding-top: 20px;
   background-color: transparent;
-  transform: translateX(-50%);
   z-index: 10;
+  // 在内容底部
+  &--bottom {
+    top: 25px;
+    padding-top: 25px;
+  }
+
+  // 在内容顶部
+  &--top {
+    bottom: 25px;
+    padding-bottom: 25px;
+  }
+
+  &--transform {
+    transform: translateX(-50%);
+  }
 
   .content {
     .blocking();
@@ -80,13 +110,19 @@ export default {
 
   .arrow {
     position: absolute;
-    top: 15px;
     width: 10px;
     height: 10px;
-    border: 5px solid transparent;
-    border: 5px solid #ffffff;
+    border: 5px solid @color-white;
     transform: translateX(-50%) rotate(45deg);
     z-index: 11;
+
+    &--top {
+      bottom: 20px;
+    }
+
+    &--bottom {
+      top: 20px;
+    }
   }
 }
 

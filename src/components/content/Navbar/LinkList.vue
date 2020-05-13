@@ -12,18 +12,18 @@
       <a class="nav-link" href="#">番剧</a>
     </template>
   </link-item>
-  <link-item :left-distance="190" :arrow-left-distance="72">
+  <link-item left-distance="190px" arrow-left-distance="72px">
     <template v-slot:link><a class="nav-link" href="#">游戏中心</a></template>
     <template v-slot:dialog><game-center /></template>
   </link-item>
-  <link-item :left-distance="190" :arrow-left-distance="86">
+  <link-item left-distance="190px" arrow-left-distance="86px">
     <template v-slot:link><a class="nav-link" href="#">直播</a></template>
     <template v-slot:dialog><lives /></template>
   </link-item>
   <link-item :disable-popout="true">
     <template v-slot:link><a class="nav-link" href="#">会员购</a></template>
   </link-item>
-  <link-item :left-distance="205" :arrow-left-distance="70">
+  <link-item left-distance="205px" arrow-left-distance="70px">
     <template v-slot:link><a class="nav-link" href="#">漫画</a></template>
     <template v-slot:dialog><comics /></template>
   </link-item>

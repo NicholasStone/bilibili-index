@@ -29,6 +29,9 @@
 .hover-background-gray:hover {
   background: #f4f4f4;
 }
+.hover-text-blue:hover {
+  color: #00a1d6;
+}
 .flex-vertical-center {
   display: flex;
   align-items: center;

@@ -16,8 +16,8 @@ import ContentView from './views/ContentView'
 export default {
   name: 'App',
   components: {
-    Banner,
     Navbar,
+    Banner,
     MainMenu,
     ContentView
   }
@@ -29,7 +29,5 @@ export default {
 .container {
   width: 100%;
   height: 100%;
-  // display: flex;
-  // .flexing(nowrap, center, center, center);
 }
 </style>

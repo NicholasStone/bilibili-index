@@ -41,7 +41,7 @@
         <template v-slot:link><a href="#">创作中心</a></template>
       </link-item>
     </section>
-    <link-item class="contribute" :left-distance="-35" :arrow-left-distance="237">
+    <link-item class="contribute" left-distance="-35px" arrow-left-distance="237px">
       <template v-slot:link><button class="w-100 h-100 contribute-btn">投稿</button></template>
       <template v-slot:dialog><user-contribute /></template>
     </link-item>
