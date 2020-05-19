@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default function request (config) {
   const instance = axios.create({
-    baseURL: 'http://dev.nichospace.com:28001',
+    baseURL: '/',
     timeout: 5000
   })
 

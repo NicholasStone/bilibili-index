@@ -1,16 +1,23 @@
 <template>
   <div class="link-item"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave">
-    <slot name="link"></slot>
-    <popout-dialog :show="alwaysShow || actived" v-if="!disablePopout" v-bind="$attrs">
+       @mouseenter="handleMouseEnter"
+       @mouseleave="handleMouseLeave">
+    <div class="link-item__reference" v-popover:[reference]>
+      <slot name="link"></slot>
+    </div>
+    <popover
+      :ref="reference"
+      :active="active"
+      v-if="!disablePopout"
+      v-bind="$attrs">
       <slot name="dialog"></slot>
-    </popout-dialog>
+    </popover>
   </div>
 </template>
 
 <script>
-import PopoutDialog from 'Components/common/PopoutDialog'
+import Popover from 'Components/common/Popover/'
+import { generateId } from 'Utils/popover'
 
 export default {
   name: 'LinkItem',
@@ -19,23 +26,23 @@ export default {
     disablePopout: {
       type: Boolean,
       default: false
-    },
-    alwaysShow: Boolean
+    }
   },
   components: {
-    PopoutDialog
+    Popover
   },
   data () {
     return {
-      actived: false
+      active: false,
+      reference: `popover-ref-${generateId()}`
     }
   },
   methods: {
     handleMouseEnter () {
-      this.actived = true
+      this.active = true
     },
     handleMouseLeave () {
-      this.actived = false
+      this.active = false
     }
   }
 }
@@ -53,6 +60,9 @@ export default {
   }
   .logo {
     margin-right: 6px;
+  }
+  &__reference {
+    height: 100%
   }
 }
 </style>

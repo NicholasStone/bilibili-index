@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <navbar />
-    <banner/>
-    <main-menu />
+     <navbar />
+     <banner/>
+     <main-menu />
     <content-view />
   </div>
 </template>
@@ -25,7 +25,6 @@ export default {
 </script>
 
 <style lang="less">
-@import '~Assets/css/base.less';
 .container {
   width: 100%;
   height: 100%;

@@ -1,11 +1,21 @@
 const path = require('path');
 const server = require('./server')
+require('dotenv').config()
+
+const devServer = {
+  host: '0.0.0.0',
+  port: process.env.DEV_SERVER_PORT,
+  disableHostCheck: true,
+  before: server
+}
+
+if (process.env.DEV_ENV !== 'local'){
+  devServer.public = process.env.REMOTE_PUBLIC_HOST
+}
 
 module.exports = {
   chainWebpack: config => {
     config.module.rules.delete("svg"); //重点:删除默认配置中处理svg,
-    //const svgRule = config.module.rule('svg')
-    //svgRule.uses.clear()
     config.module
       .rule('svg-sprite-loader')
       .test(/\.svg$/)
@@ -38,21 +48,7 @@ module.exports = {
       chunk: ['chunk-vendors', 'chunk-common', 'index'],
     },
   },
-  devServer: {
-    host: '0.0.0.0',
-    port: '28001',
-    public: 'http://dev.nichospace.com:28001',
-    disableHostCheck: true,
-    // proxy: {
-    //   '/apis': {
-    //     target: 'https://i0.hdslb.com',
-    //     pathRewrite: {'^/apis': ''},
-    //     changeOrigin: true,
-    //     agent: ''
-    //   },
-    // },
-    before: server
-  },
+  devServer,
   configureWebpack: {
     resolve: {
       alias: {
@@ -70,7 +66,7 @@ module.exports = {
     'style-resources-loader': {
       preProcessor: 'less',
       patterns: [
-        path.resolve(__dirname, './src/assets/css/_main.less'),
+        path.resolve(__dirname, './src/assets/css/_variable.less'),
       ],
     },
   },

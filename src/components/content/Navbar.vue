@@ -44,8 +44,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~Assets/css/_variable.less";
-
 .navbar{
   display: flex;
   position: absolute;
@@ -101,7 +99,6 @@ export default {
   .navbar-user-center {
     max-width: 450px;
     min-width: 450px;
-    // margin-left: 20px;
   }
 }
 </style>

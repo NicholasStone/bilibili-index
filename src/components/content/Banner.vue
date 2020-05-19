@@ -4,7 +4,7 @@
     :style="backgroundImage"
   >
     <div class="cover"></div>
-    <div class="warp bilibili-banner-blackboard">
+    <div class="wrap bilibili-banner-blackboard">
       <a href="#" class="bilibili-logo">
         <img src="~Assets/images/logo.png">
       </a>

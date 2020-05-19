@@ -4,7 +4,7 @@ export default {
     channels: [{
       link: 'https://www.bilibili.com/v/douga/',
       title: '动画',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-1048',
       subChannels: {
         width: '162',
@@ -33,7 +33,7 @@ export default {
     {
       link: 'https://www.bilibili.com/anime/',
       title: '番剧',
-      newUploaded: '142',
+      newUploaded: 142,
       popover: 'van-popover-1125',
       subChannels: {
         width: '172',
@@ -66,7 +66,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/music/',
       title: '音乐',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-4458',
       subChannels: {
         width: '268',
@@ -111,7 +111,7 @@ export default {
     {
       link: 'https://www.bilibili.com/guochuang/',
       title: '国创',
-      newUploaded: '438',
+      newUploaded: 438,
       popover: 'van-popover-9515',
       subChannels: {
         width: '214',
@@ -148,7 +148,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/dance/',
       title: '舞蹈',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-1617',
       subChannels: {
         width: '172',
@@ -181,7 +181,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/game/',
       title: '游戏',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-6487',
       subChannels: {
         width: '240',
@@ -226,7 +226,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/technology/',
       title: '科技',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-394',
       subChannels: {
         width: '172',
@@ -263,7 +263,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/digital/',
       title: '数码',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-1558',
       subChannels: {
         width: '80',
@@ -288,7 +288,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/life/',
       title: '生活',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-9871',
       subChannels: {
         width: '124',
@@ -329,7 +329,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/kichiku/',
       title: '鬼畜',
-      newUploaded: '219',
+      newUploaded: 219,
       popover: 'van-popover-2148',
       subChannels: {
         width: '118',
@@ -354,7 +354,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/fashion/',
       title: '时尚',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-9866',
       subChannels: {
         width: '124',
@@ -383,7 +383,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/information/',
       title: '资讯',
-      newUploaded: '90',
+      newUploaded: 90,
       popover: 'van-popover-7340',
       subChannels: {
         width: '60',
@@ -408,7 +408,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/ent/',
       title: '娱乐',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-8818',
       subChannels: {
         width: '90',
@@ -429,7 +429,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/cinephile/',
       title: '影视',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-9938',
       subChannels: {
         width: '84',
@@ -454,7 +454,7 @@ export default {
     {
       link: 'https://www.bilibili.com/cinema/',
       title: '放映厅',
-      newUploaded: '297',
+      newUploaded: 297,
       popover: 'van-popover-3821',
       subChannels: {
         width: '68',
@@ -475,7 +475,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/life/funny',
       title: '搞笑',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-4028',
       subChannels: {
         width: '0',
@@ -485,7 +485,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/life/animal',
       title: '动物圈',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-1803',
       subChannels: {
         width: '0',
@@ -495,7 +495,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/life/food',
       title: '美食圈',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-4870',
       subChannels: {
         width: '0',
@@ -505,7 +505,7 @@ export default {
     {
       link: 'https://www.bilibili.com/v/game/stand_alone',
       title: '单机游戏',
-      newUploaded: '999+',
+      newUploaded: Math.floor(Math.random() * 10000),
       popover: 'van-popover-4959',
       subChannels: {
         width: '0',
@@ -514,16 +514,23 @@ export default {
     },
     {
       link: 'https://www.bilibili.com/v/life/daily/#/530003',
-      title: 'VLOG--',
-      newUploaded: '--',
+      title: 'VLOG',
+      newUploaded: '',
       popover: 'van-popover-3620',
       subChannels: {
         width: '0',
         channels: []
       }
-    }]
+    }],
+    shrinkChannels: null
   },
   getters: {
-    channels: s => s.channels
+    channels: s => (shrink) => {
+      if (shrink && s.shrinkChannels) return s.shrinkChannels
+      if (!shrink) return s.channels
+      // 去掉最后5个
+      s.shrinkChannels = s.channels.filter((_, index, arr) => arr.length - index > 5)
+      return s.shrinkChannels
+    }
   }
 }

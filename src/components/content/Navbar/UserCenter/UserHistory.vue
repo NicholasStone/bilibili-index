@@ -7,6 +7,7 @@
 <script>
 import Dynamic from 'Components/common/Dynamic/Dynamic'
 import DynamicItem from 'Components/common/Dynamic/DynamicItem'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'TimelineDialog',
@@ -27,6 +28,11 @@ export default {
     handleTabChange (index) {
       this.currentTab = index
     }
+  },
+  computed: {
+    ...mapGetters('dynamic', [
+      'videos'
+    ])
   }
 }
 </script>

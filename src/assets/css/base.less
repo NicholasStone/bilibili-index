@@ -1,6 +1,9 @@
 @import "./normalize.css";
-@import "./_variable.less";
 @import "./bilifont.css";
+@import './_variable.less';
+@import './_common.less';
+@import './_mixins.less';
+
 
 // :root {
 //   --color-text: #212121;
@@ -42,10 +45,6 @@ a {
   text-decoration: none;
 }
 
-a.block{
-  display: block;
-}
-
 i,
 img
 {
@@ -68,17 +67,7 @@ button {
 .clear-fix {
   zoom: 1;
 }
-/* 
-.arrow-right {
-  border-top: 1px solid #999;
-  border-left: 1px solid #999;
-  width: 9px;
-  height: 9px;
-  background-color: transparent;
-  transform: rotate(135deg);
-  display: inline-block;
-  margin-left: .1rem;
-} */
+
 
 .float-left {
   float: left;
@@ -88,3 +77,18 @@ button {
   float: right;
 }
 
+.wrap {
+  width: 1630px;
+  margin: 0 auto;
+  @media screen and (max-width: 1870px){
+    width: 1414px;
+  }
+
+  @media screen and (max-width: 1654px){
+    width: 1198px;
+  }
+
+  @media screen and (max-width: 1438px){
+    width: 999px;
+  }
+}
