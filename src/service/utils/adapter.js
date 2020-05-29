@@ -1,6 +1,5 @@
 export default function indexDynamicAdapter ({ data: { cards } }) {
   return cards.map(({ desc, card }) => {
-    const video = JSON.parse(card)
     return {
       dynamic_id: desc.dynamic_id,
       timestamp: desc.timestamp,
@@ -13,14 +12,14 @@ export default function indexDynamicAdapter ({ data: { cards } }) {
         vipType: desc.user_profile.vipType
       },
       video: {
-        aid: video.aid,
-        attribute: video.attribute,
-        cid: video.cid,
-        copyright: video.copyright,
-        duration: video.duration,
-        pic: video.pic,
-        pubdate: video.pubdate,
-        title: video.title
+        aid: card.aid,
+        attribute: card.attribute,
+        cid: card.cid,
+        copyright: card.copyright,
+        duration: card.duration,
+        pic: card.pic,
+        pubdate: card.pubdate,
+        title: card.title
       }
     }
   })

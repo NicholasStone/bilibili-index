@@ -44,23 +44,23 @@ export default {
   data () {
     return {
       banner: {
-        image: '/apis/bfs/game/c8c0bf20b13db63d2dd186bd7c3f5813b775c816.jpg',
+        image: '/cdn/bfs/game/c8c0bf20b13db63d2dd186bd7c3f5813b775c816.jpg',
         name: '公主连结Re:Dive',
         link: 'https://game.bilibili.com/pcr/chun/'
       },
       recommendGames: [
-        { name: '命运-冠位指定（Fate/GO）', image: '/apis/bfs/game/f7d4ee0877089e4079b8f0b4f5c95dd4ceba512a.png', link: 'https://game.bilibili.com/fgo/re_gudateito/' },
-        { name: '碧蓝航线', image: '/apis/bfs/game/abfe03ca09e2051e5edc2693499f5db4d72e0e79.png', link: 'https://game.bilibili.com/blhx/chdhx/' },
-        { name: '双生视界', image: '/apis/bfs/game/6afdae46521460c5faa39042932270c14befaf63.jpg', link: 'https://game.bilibili.com/sssj/' }
+        { name: '命运-冠位指定（Fate/GO）', image: '/cdn/bfs/game/f7d4ee0877089e4079b8f0b4f5c95dd4ceba512a.png', link: 'https://game.bilibili.com/fgo/re_gudateito/' },
+        { name: '碧蓝航线', image: '/cdn/bfs/game/abfe03ca09e2051e5edc2693499f5db4d72e0e79.png', link: 'https://game.bilibili.com/blhx/chdhx/' },
+        { name: '双生视界', image: '/cdn/bfs/game/6afdae46521460c5faa39042932270c14befaf63.jpg', link: 'https://game.bilibili.com/sssj/' }
       ],
       newGames: [
-        { name: '天地劫', image: '/apis/bfs/game/7c1721d09185c060fda9219ae3cc4ccc561f7141.png', link: 'https://www.biligame.com/detail/?id=105019' },
-        { name: '炸裂魔女', image: '/apis/bfs/game/db7eee63a2e41790fdb98bc8047a45be54692e1b.png', link: 'https://www.biligame.com/detail/?id=103276' },
-        { name: '风起长安', image: '/apis/bfs/game/f6e94e5f30b81bf2a9f5eb102339cc02b95a0cea.png', link: 'https://www.biligame.com/detail/?id=105140' },
-        { name: '群星守卫', image: '/apis/bfs/game/9e9bfbc05e1862efa49ea8b35651b755181b3aa7.png', link: 'https://www.biligame.com/detail/?id=104882' },
-        { name: '未定事件簿', image: '/apis/bfs/game/558ecbc508c02f6607e224d3995b701082f9a565.png', link: 'https://www.biligame.com/detail/?id=103811' },
-        { name: '四叶草剧场', image: '/apis/bfs/game/6de80e09cbc3f321196098bb9ae52b65c78f2e33.png', link: 'https://www.biligame.com/detail/?id=103396' },
-        { name: '魔法记录 魔法少女小圆外传', image: '/apis/bfs/game/9943ddcc7be10195255dfc8df6194351b423e32b.png', link: 'https://game.bilibili.com/magireco/' }
+        { name: '天地劫', image: '/cdn/bfs/game/7c1721d09185c060fda9219ae3cc4ccc561f7141.png', link: 'https://www.biligame.com/detail/?id=105019' },
+        { name: '炸裂魔女', image: '/cdn/bfs/game/db7eee63a2e41790fdb98bc8047a45be54692e1b.png', link: 'https://www.biligame.com/detail/?id=103276' },
+        { name: '风起长安', image: '/cdn/bfs/game/f6e94e5f30b81bf2a9f5eb102339cc02b95a0cea.png', link: 'https://www.biligame.com/detail/?id=105140' },
+        { name: '群星守卫', image: '/cdn/bfs/game/9e9bfbc05e1862efa49ea8b35651b755181b3aa7.png', link: 'https://www.biligame.com/detail/?id=104882' },
+        { name: '未定事件簿', image: '/cdn/bfs/game/558ecbc508c02f6607e224d3995b701082f9a565.png', link: 'https://www.biligame.com/detail/?id=103811' },
+        { name: '四叶草剧场', image: '/cdn/bfs/game/6de80e09cbc3f321196098bb9ae52b65c78f2e33.png', link: 'https://www.biligame.com/detail/?id=103396' },
+        { name: '魔法记录 魔法少女小圆外传', image: '/cdn/bfs/game/9943ddcc7be10195255dfc8df6194351b423e32b.png', link: 'https://game.bilibili.com/magireco/' }
       ],
       hoverdIndex: -1
     }

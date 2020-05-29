@@ -1,5 +1,5 @@
 <template>
-<svg class="svg-icon" :class="classes">
+<svg class="svg-icon" :style="style">
   <use :xlink:href="iconName" />
 </svg>
 </template>
@@ -13,14 +13,24 @@ export default {
       type: String,
       required: true
     },
-    classes: {
-      type: String,
-      default: ''
+    width: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
     iconName () {
       return `#bili-${this.icon}`
+    },
+    style () {
+      let size = '1em'
+      if (this.width) {
+        size = `${this.width}px`
+      }
+      return {
+        width: size,
+        height: size
+      }
     }
   }
 }
@@ -29,8 +39,6 @@ export default {
 <style lang="less" scoped>
 .svg-icon {
   overflow: hidden;
-  width: 1em;
-  height: 1em;
   vertical-align: middle;
   fill: currentColor;
 }

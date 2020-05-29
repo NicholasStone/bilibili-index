@@ -44,7 +44,7 @@ export default {
   computed: {
     comicCoverSrc () {
       if (this.comicCover < 0) return ''
-      return this.comicList[this.comicCover].cover
+      return this.manga.comicList[this.comicCover].cover
     },
     ...mapGetters('navbar', ['manga'])
   }

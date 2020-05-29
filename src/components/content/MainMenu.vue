@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import PageEntries from './PageEntries'
-import Channels from './Channels'
-import FriendshipLinks from './FriendshipLinks'
+import PageEntries from './MainMenu/PageEntries'
+import Channels from './MainMenu/Channels'
+import FriendshipLinks from './MainMenu/FriendshipLinks'
 
 export default {
   name: 'MainMenu',
@@ -36,7 +36,7 @@ export default {
 
     margin: 0 20px;
 
-    @media screen and (max-width: 1654px) {
+    @media screen and (max-width: @screen-wide-middle) {
       margin: 0 15px;
     }
   }

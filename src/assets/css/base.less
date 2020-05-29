@@ -4,16 +4,6 @@
 @import './_common.less';
 @import './_mixins.less';
 
-
-// :root {
-//   --color-text: #212121;
-//   --color-high-text: #ff5777;
-//   --color-tint: #ff8198;
-//   --color-background: #fff;
-//   --font-size: 14px;
-//   --line-height: 1.5;
-// }
-
 *,
 *::before,
 *::after {
@@ -80,15 +70,15 @@ button {
 .wrap {
   width: 1630px;
   margin: 0 auto;
-  @media screen and (max-width: 1870px){
+  @media screen and (max-width: @screen-size-wide){
     width: 1414px;
   }
 
-  @media screen and (max-width: 1654px){
+  @media screen and (max-width: @screen-wide-middle){
     width: 1198px;
   }
 
-  @media screen and (max-width: 1438px){
+  @media screen and (max-width: @screen-wide-micro){
     width: 999px;
   }
 }

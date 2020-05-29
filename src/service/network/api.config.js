@@ -1,5 +1,35 @@
-export default {
+import { flatten } from 'flat'
+
+export const apiList = {
   video: {
+    recommend: {
+      index_section: {
+        url: 'https://api.bilibili.com/x/web-interface/dynamic/region',
+        method: 'GET',
+        verify: false,
+        params: {
+          ps: '数量',
+          rid: 'section id'
+        }
+      },
+      preview_pictures: {
+        url: 'https://api.bilibili.com/pvideo',
+        method: 'GET',
+        verify: false,
+        params: {
+          aid: 'av号'
+        },
+        comment: '视频预览图'
+      },
+      danmaku: {
+        url: 'https://api.bilibili.com/x/v2/dm/ajax',
+        method: 'GET',
+        verify: false,
+        params: {
+          aid: 'av号'
+        }
+      }
+    },
     info: {
       info_simple: {
         url: 'https://api.bilibili.com/x/web-interface/archive/stat',
@@ -628,7 +658,7 @@ export default {
           tid: '分区ID，0为全部'
         },
         comment: '获取收藏夹内容'
-      },
+      }
     },
     operate: {
       modify: {
@@ -662,13 +692,17 @@ export default {
   },
   other: {
     online: {
-      url: 'https://api.bilibili.com/x/web-interface/online',
-      method: 'GET',
-      verify: false,
-      comment: '获取在线人数'
+      now_online: {
+        url: 'https://api.bilibili.com/x/web-interface/online',
+        method: 'GET',
+        verify: false,
+        comment: '获取在线人数'
+      }
     }
-  },
-  bangumi: {
-
   }
+  // bangumi: {
+  //
+  // }
 }
+const apis = flatten(apiList, { maxDepth: 3 })
+export default apis

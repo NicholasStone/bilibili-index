@@ -6,7 +6,8 @@ const devServer = {
   host: '0.0.0.0',
   port: process.env.DEV_SERVER_PORT,
   disableHostCheck: true,
-  before: server
+  before: server,
+  // proxy
 }
 
 if (process.env.DEV_ENV !== 'local'){
@@ -62,11 +63,11 @@ module.exports = {
       },
     },
   },
-  pluginOptions: {
+  pluginOptions : {
     'style-resources-loader': {
       preProcessor: 'less',
       patterns: [
-        path.resolve(__dirname, './src/assets/css/_variable.less'),
+        path.resolve(__dirname, './src/assets/css/base.less'),
       ],
     },
   },

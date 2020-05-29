@@ -7,7 +7,7 @@ export default {
   state: {
     name: 'Nicholas-',
     sex: '男',
-    face: 'http://i0.hdslb.com/bfs/face/1e4e803270680ed2b82a5d9f99955a150563c3f6.jpg',
+    face: '/cdn/bfs/face/1e4e803270680ed2b82a5d9f99955a150563c3f6.jpg',
     sign: '',
     rank: 10000,
     level: 5,
@@ -30,15 +30,15 @@ export default {
     pendant: {
       pid: 996,
       name: '拉文克劳',
-      image: 'http://i1.hdslb.com/bfs/face/971b69742c60b93225d38eb4c99fc382e2e5eb44.png',
+      image: '/cdn/bfs/face/971b69742c60b93225d38eb4c99fc382e2e5eb44.png',
       expire: 0,
-      image_enhance: 'http://i1.hdslb.com/bfs/face/971b69742c60b93225d38eb4c99fc382e2e5eb44.png'
+      image_enhance: '/cdn/bfs/face/971b69742c60b93225d38eb4c99fc382e2e5eb44.png'
     },
     nameplate: {
       nid: 74,
       name: '大会员2018年度勋章',
-      image: 'http://i0.hdslb.com/bfs/face/421179426c929dfeaed4117461c83f5d07ffb148.png',
-      image_small: 'http://i0.hdslb.com/bfs/face/682001c2e1c2ae887bdf2a0e18eef61180c48f84.png',
+      image: '/cdn/bfs/face/421179426c929dfeaed4117461c83f5d07ffb148.png',
+      image_small: '/cdn/bfs/face/682001c2e1c2ae887bdf2a0e18eef61180c48f84.png',
       level: '稀有勋章',
       condition: '2018.6.26-7.8某一天是年度大会员'
     },

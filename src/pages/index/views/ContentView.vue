@@ -1,34 +1,42 @@
 <template>
-  <div class="content">
-    <link-item>
-      <template v-slot:link><span style="color: #212121">游戏中心</span></template>
-      <template v-slot:dialog>
-        <div style="width: 300px; height: 100px; padding: 20px">dialog</div>
+  <div class="container">
+    <card-view :section-name="category[1].name">
+      <template v-slot:title>
+        <svg-icon :icon="category[1].icon" :width="36" style="margin-right: 6px"/>
+        {{category[1].title}}
       </template>
-    </link-item>
+    </card-view>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import LinkItem from 'Components/content/Navbar/common/LinkItem'
-
+import CardView from 'Index/components/ContentSection/CardView'
+import { mapGetters } from 'vuex'
+// import Playground from 'Index/components/Playground'
 export default {
   name: 'Content',
   components: {
-    LinkItem
+    // Playground
+    CardView
+  },
+  computed: {
+    ...mapGetters('sections', ['category'])
   }
 }
 </script>
 
 <style lang="less" scoped>
-.content {
+.container {
   position: relative;
   width: 100%;
-  height: 50px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #f0f0f0;
+  .content {
+    border-radius: 4px;
+    background-color: white;
+  }
 }
 </style>

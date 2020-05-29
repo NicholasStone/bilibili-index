@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-     <navbar />
-     <banner/>
-     <main-menu />
+<!--     <navbar />-->
+<!--     <banner/>-->
+<!--     <main-menu />-->
     <content-view />
   </div>
 </template>
