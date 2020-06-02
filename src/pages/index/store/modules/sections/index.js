@@ -1,6 +1,4 @@
 import getters from './getters'
-import movies from './movies'
-import digital from './digital'
 import mutations from './mutations'
 import actions from './actions'
 import {
@@ -36,12 +34,12 @@ export default {
        * icon: 标题前的图标
        * order: 分区顺序
        */
-      { title: '数码', name: DIGITAL, icon: '', order: 1 },
-      { title: '电影', name: MOVIE, icon: 'movie', order: 2 }
-    ],
-    // [DIGITAL]: digital,
-    // [MOVIE]: movies
-    [MOVIE]: []
+      { title: '动画', name: DOUGA, icon: 'douga', order: 0 },
+      { title: '数码', name: DIGITAL, icon: 'digital', order: 1 },
+      { title: '电影', name: MOVIE, icon: 'movie', order: 2 },
+      { title: '游戏', name: GAMES, icon: 'games', order: 3 },
+      { title: '音乐', name: MUSIC, icon: 'music', order: 4 }
+    ]
   },
   getters,
   actions,

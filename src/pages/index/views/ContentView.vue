@@ -1,15 +1,24 @@
 <template>
   <div class="container">
-    <playground></playground>
+    <content-section
+      class="wrap section--mb"
+      v-for="section in sections"
+      :key="section.name"
+      :section="section"></content-section>
   </div>
 </template>
 
 <script>
-import Playground from 'Index/components/Playground'
+import ContentSection from 'Index/components/ContentSection'
 export default {
   name: 'Content',
   components: {
-    Playground
+    ContentSection
+  },
+  computed: {
+    sections () {
+      return this.$store.getters['sections/category']
+    }
   }
 }
 </script>
@@ -20,8 +29,12 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: #f0f0f0;
+  background: #ffffff;
+  .section--mb {
+    margin-bottom: 40px;
+  }
 }
 </style>

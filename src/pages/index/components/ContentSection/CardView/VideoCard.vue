@@ -64,7 +64,7 @@ export default {
     margin: 10px 0 8px;
     padding-right: 12px;
     font-weight: 500;
-    .line-breaking(normal);
+    .line-breaking(2);
   }
   &__up {
     .blocking(100%, auto);

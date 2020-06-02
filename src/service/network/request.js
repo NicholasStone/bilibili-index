@@ -17,7 +17,10 @@ export default function request (api, config = {}) {
     return config
   })
 
-  instance.interceptors.response.use((result) => handleDataProxy(result.data.data), (err) => console.error(err))
+  instance.interceptors.response.use(({ data }) => {
+    if (data.data) return handleDataProxy(data.data)
+    if (data.result) return handleDataProxy(data.result)
+  }, (err) => console.error(err))
 
   return instance(options)
 }

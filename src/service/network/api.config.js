@@ -39,6 +39,15 @@ export const apiList = {
           original: '不知道干什么的，好像不加也没问题'
         },
         comment: '本区排行榜'
+      },
+      publication_ranking: {
+        url: 'https://api.bilibili.com/pgc/web/rank/list',
+        method: 'GET',
+        verify: false,
+        params: {
+          season_type: '出版物的类型 1动漫, 2电影, 3纪录片, 4国动, 5电视剧',
+          day: '最近n日'
+        }
       }
     },
     info: {

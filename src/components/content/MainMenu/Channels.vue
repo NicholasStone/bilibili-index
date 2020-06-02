@@ -54,7 +54,6 @@ export default {
   mounted () {
     new ResizeObserver(entries => {
       this.shrank = entries[0].contentRect.width < 740
-      console.log(entries[0].contentRect.width)
     }).observe(this.$el)
   }
 }

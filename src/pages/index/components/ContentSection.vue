@@ -2,6 +2,10 @@
 <div class="wrap content-section">
   <div class="section__card-view">
     <card-view :section-name="sectionName">
+      <template slot="card-title">
+        <svg-icon :icon="section.icon" :width="36"/>
+        {{section.title}}
+      </template>
     </card-view>
   </div>
   <div class="section__side_view">
@@ -17,15 +21,20 @@ import SideView from 'Index/components/ContentSection/SideView'
 export default {
   name: 'ContentSection',
   props: {
-    // sectionName: {
-    //   type: String,
-    //   required: true
-    // }
+    section: {
+      type: Object,
+      required: true
+    }
   },
   components: { SideView, CardView },
   data () {
     return {
-      sectionName: 'digital'
+      // sectionName: 'digital'
+    }
+  },
+  computed: {
+    sectionName () {
+      return this.section.name
     }
   }
 }

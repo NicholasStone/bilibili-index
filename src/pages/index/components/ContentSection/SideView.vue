@@ -11,9 +11,11 @@
   <main class="side-view__ranking">
     <slot>
       <top-work
-        v-for="(video, index) in rank"
+        class="side-view--wrap"
+        v-for="(video, i) in rank"
         :key="video.bvid"
-        :index="parseInt(index) + 1"
+        :index="i + 1"
+        :show-cover="i === 0"
         :video="video" />
     </slot>
   </main>
@@ -39,7 +41,8 @@ export default {
   },
   methods: {
     async fetchSectionRank () {
-      this.rank = await request('video.index.section_ranking', { params: { rid: getRid(this.sectionName), day: 3, original: 0 } })
+      const r = await request('video.index.section_ranking', { params: { rid: getRid(this.sectionName), day: 3, original: 0 } })
+      this.rank = Object.values(r).slice(0, 10)
     }
   },
   mounted () {
@@ -77,5 +80,12 @@ export default {
     }
   }
 
+  &--wrap {
+    @media screen and (max-width: @screen-wide-micro) {
+      &:nth-child(n+9){
+        display: none;
+      }
+    }
+  }
 }
 </style>

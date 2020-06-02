@@ -3,11 +3,11 @@
   <div class="work__container" v-popover:[ref] @mouseenter="active = true" @mouseleave="active = false">
     <div class="work__ranking" :class="index <= 3 ? 'work__ranking--top3' : 'work__ranking--others'">{{index}}</div>
     <a :class="['work__synopsis work__synopsis--response', {'work__synopsis--top': index === 1}]">
-      <div class="work__cover" v-if="index === 1">
+      <div class="work__cover" v-if="showCover">
         <img :src="video.pic" :alt="video.title">
         <watch-later/>
       </div>
-      <div class="work__basic" v-if="index === 1">
+      <div class="work__basic" v-if="showCover">
         <span class="work__title work__title--2lines hover-text-blue">{{video.title}}</span>
         <span class="work__subs">综合得分: {{this.video.pts | tenThousand}}</span>
       </div>
@@ -56,6 +56,10 @@ export default {
     index: {
       type: Number,
       required: true
+    },
+    showCover: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

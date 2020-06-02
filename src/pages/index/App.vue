@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-<!--     <navbar />-->
-<!--     <banner/>-->
-<!--     <main-menu />-->
+     <navbar />
+     <banner/>
+     <main-menu />
     <content-view />
   </div>
 </template>
@@ -28,5 +28,6 @@ export default {
 .container {
   width: 100%;
   height: 100%;
+  background-color: @color-white;
 }
 </style>

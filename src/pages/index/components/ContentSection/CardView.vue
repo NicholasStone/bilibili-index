@@ -107,6 +107,7 @@ export default {
 
     &-btn {
       .blocking(auto, 22px, flex);
+      padding: 0 7px;
       justify-content: center;
       align-items: center;
       background-color: #fff;
