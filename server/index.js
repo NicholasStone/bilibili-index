@@ -40,10 +40,10 @@ module.exports = function (app) {
         console.error(err)
       })
   })
-
-  app.get('/', (req, resp) => {
-    resp.redirect('/index.html')
-  })
+  //
+  // app.get('/', (req, resp) => {
+  //   resp.redirect('/index.html')
+  // })
 
   app.get('/BoxItems', (req, resp) => {
     resp.redirect('/BoxItems.json')

@@ -6,6 +6,7 @@ import requestOptions from './api'
 export default function request (api, config = {}) {
   const baseURL = 'http://localhost:8080/api'
   const options = requestOptions(api, config)
+  if (!options) return null
   const instance = axios.create({
     // baseURL,
     timeout: 5000
@@ -16,7 +17,7 @@ export default function request (api, config = {}) {
     return config
   })
 
-  instance.interceptors.response.use((result) => handleDataProxy(result.data), (err) => console.error(err))
+  instance.interceptors.response.use((result) => handleDataProxy(result.data.data), (err) => console.error(err))
 
   return instance(options)
 }

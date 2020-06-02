@@ -715,3 +715,9 @@ test('handle proxy data', () => {
   expect(handleDataProxy(generateTestCase(originHost)))
     .toEqual(generateTestCase(expectedHost))
 })
+
+it('should fetch rank list', async () => {
+  expect.assertions(1)
+  await expect(request('video.index.section_ranking', { params: { rid: 188, day: 3, original: 0 } })).resolves
+    .toHaveProperty('code', 0)
+})

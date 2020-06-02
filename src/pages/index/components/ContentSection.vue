@@ -1,34 +1,52 @@
 <template>
-<div class="wrap content-section clear-fix">
-  <div class="card-view"></div>
-  <div class="side-view"></div>
+<div class="wrap content-section">
+  <div class="section__card-view">
+    <card-view :section-name="sectionName">
+    </card-view>
+  </div>
+  <div class="section__side_view">
+    <side-view :section-name="sectionName">
+    </side-view>
+  </div>
 </div>
 </template>
 
 <script>
+import CardView from 'Index/components/ContentSection/CardView'
+import SideView from 'Index/components/ContentSection/SideView'
 export default {
-  name: 'ContentSection'
+  name: 'ContentSection',
+  props: {
+    // sectionName: {
+    //   type: String,
+    //   required: true
+    // }
+  },
+  components: { SideView, CardView },
+  data () {
+    return {
+      sectionName: 'digital'
+    }
+  }
 }
 </script>
 
 <style type="less" scoped>
 .content-section {
-  .card-view {
-    @media screen and (max-width: @screen-size-wide) {
+  display: flex;
+  justify-content: space-between;
+}
+.section__card-view {
+  @media screen {
+    @media (max-width: @screen-size-wide) {
       width: 1070px;
     }
-
-    @media screen and (max-width: @screen-wide-middle) {
-      width:854px;
+    @media (max-width: @screen-wide-middle) {
+      width: 854px;
     }
-
-    @media screen and (max-width: @screen-wide-micro) {
+    @media (max-width: @screen-wide-micro) {
       width: 710px;
-      height: 360px;
     }
-  }
-  .side-view {
-    width: 320px;
   }
 }
 </style>

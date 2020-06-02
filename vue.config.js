@@ -63,7 +63,7 @@ module.exports = {
       },
     },
   },
-  pluginOptions : {
+  pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
       patterns: [

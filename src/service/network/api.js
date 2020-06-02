@@ -1,6 +1,11 @@
 import apis from 'Network/api.config'
+import section from 'Index/config/section'
 
 export default function requestOptions (apiName, config) {
+  if (!apis[apiName]) {
+    console.error(`API ${apiName} not found`)
+    return null
+  }
   const { url, method, params: requiredParams } = apis[apiName]
   const requestOption = {
     url,
@@ -24,4 +29,7 @@ export default function requestOptions (apiName, config) {
   }
 
   return requestOption
+}
+export function getRid (region) {
+  return section[region]
 }

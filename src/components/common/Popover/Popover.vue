@@ -7,7 +7,7 @@
       v-show="active"
       :id="id"
       :style="{width, zIndex}">
-      <div data-popper-arrow class="popper__arrow"></div>
+      <div v-if="arrow" data-popper-arrow class="popper__arrow"></div>
       <div
         class="popover__content"
         :class="transparent? 'popper__content--bg-transparent' : 'popper__content--bg-white'">
@@ -34,6 +34,15 @@ export default {
     }
   },
   props: {
+    // 这样做的麻烦之处在于，必须等到 使用的父组件挂载完成之后才会有ref值
+    refEl: {
+      type: Object,
+      default: null
+    },
+    arrow: {
+      type: Boolean,
+      default: true
+    },
     placement: {
       type: String,
       default: 'bottom',
@@ -75,7 +84,6 @@ export default {
   },
   methods: {
     createPopper: function () {
-      // document.body.append(this.popper)
       this.popperInstance = createPopper(this.reference, this.popper, {
         placement: this.placement,
         modifiers: this.modifiers
@@ -92,7 +100,13 @@ export default {
     destroyPopper () {
       this.popperInstance.destroy()
     },
-    nextZIndex: _ => zIndex().next().value
+    nextZIndex: _ => zIndex().next().value,
+    on (el, event, fn) {
+      el.addEventListener(event, fn)
+    },
+    off (el, event) {
+      el.removeEventListener()
+    }
   },
   watch: {
     active () {
@@ -101,11 +115,13 @@ export default {
     }
   },
   mounted: function () {
-    this.reference = this.$refs.reference
+    this.reference = this.$refs.reference || this.refEl
     this.popper = this.$refs.popper
 
     this.reference.setAttribute('aria-describedby', this.id)
-
+    // add eventlistener to ref element
+    // this.on(this.reference, 'mouseenter', () => {this.})
+    // todo：在此添加ref中的event listener
     this.modifiers = [
       {
         name: 'popperOffsets',
@@ -141,18 +157,25 @@ export default {
           padding: 8
         }
       },
+      {
+        name: 'flip',
+        options: {
+          flipVariations: false,
+          rootBoundary: 'document',
+          allowedAutoPlacements: ['left']
+        }
+      },
       ...this.popperModifiers
     ]
+    this.updatePopper()
   }
-  // beforeDestroy () {
-  //   this.destroyPopper()
-  // }
 }
 </script>
 
 <style lang="less" scoped>
 @padding-distance: 10px;
 .popper{
+  /*position: absolute;*/
   .popper__arrow{
     &::after {
       content: " ";
@@ -265,16 +288,21 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: .2s ease;
+  transition: 200ms ease;
   transition-property:  transform, opacity;
 }
 .slide-fade-leave-active {
-  transition: .2s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: 200ms cubic-bezier(1, 0.5, 0.8, 1);
   transition-property:  transform, opacity;
 }
 .slide-fade-enter,
 .slide-fade-leave-to {
-  transform: translateY(-5px);
+  &[data-popper-placement^=bottom] {
+    transform: translateY(-5px);
+  }
+  &[data-popper-placement^=top] {
+    transform: translateY(5px);
+  }
   opacity: 0;
 }
 </style>

@@ -17,12 +17,13 @@
   flex-direction: @direction;
 }
 
-.line-breaking(@wrap: nowrap, @style: ellipsis, @line: 2) {
+.line-breaking(@line: 1, @style: ellipsis) {
+  display: if(@line > 1, -webkit-box, inline-block);
   word-break: break-all;
   overflow: hidden;
   text-overflow: @style;
-  white-space: @wrap;
-  -webkit-line-clamp: 2;
+  white-space: if(@line>1, pre-line, nowrap);
+  -webkit-line-clamp: @line;
   -webkit-box-orient: vertical;
 }
 

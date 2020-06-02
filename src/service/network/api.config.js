@@ -2,16 +2,7 @@ import { flatten } from 'flat'
 
 export const apiList = {
   video: {
-    recommend: {
-      index_section: {
-        url: 'https://api.bilibili.com/x/web-interface/dynamic/region',
-        method: 'GET',
-        verify: false,
-        params: {
-          ps: '数量',
-          rid: 'section id'
-        }
-      },
+    index: {
       preview_pictures: {
         url: 'https://api.bilibili.com/pvideo',
         method: 'GET',
@@ -28,6 +19,26 @@ export const apiList = {
         params: {
           aid: 'av号'
         }
+      },
+      section_cards: {
+        url: 'https://api.bilibili.com/x/web-interface/dynamic/region',
+        method: 'GET',
+        verify: false,
+        params: {
+          ps: '数量',
+          rid: 'section id'
+        }
+      },
+      section_ranking: {
+        url: 'https://api.bilibili.com/x/web-interface/ranking/region',
+        method: 'GET',
+        verify: false,
+        params: {
+          rid: 'region id',
+          day: '最近 n 日',
+          original: '不知道干什么的，好像不加也没问题'
+        },
+        comment: '本区排行榜'
       }
     },
     info: {

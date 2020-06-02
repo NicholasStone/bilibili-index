@@ -3,13 +3,17 @@
   <header class="card-view__title">
     <div>
       <a href="#" target="_blank" class="card-view__title-text">
-        <slot name="title"></slot>
+        <slot name="card-title"></slot>
       </a>
     </div>
     <div class="card-view__title-options">
       <slot name="card-options">
-        <button class="card-view__title-btn"><i :class="['bilifont', 'bili-icon_caozuo_huanyihuan', {'loading': loading}]"></i>换一换</button>
-        <a href="#" target="_blank" class="card-view__title-more card-view__title-btn">更多<i class="bilifont bili-icon_caozuo_qianwang"></i></a>
+        <button class="card-view__title-btn">
+          <i :class="['bilifont', 'bili-icon_caozuo_huanyihuan', {'loading': loading}]"></i>换一换
+        </button>
+        <a href="#" target="_blank" class="card-view__title-more card-view__title-btn">
+          更多<i class="bilifont bili-icon_caozuo_qianwang"></i>
+        </a>
       </slot>
     </div>
   </header>
@@ -25,6 +29,8 @@
 </template>
 <script>
 import VideoCard from './CardView/VideoCard'
+import request from 'Network/request'
+import { getRid } from 'Network/api'
 
 export default {
   name: 'CardView',
@@ -39,19 +45,23 @@ export default {
   },
   data () {
     return {
+      cards: [],
       loading: false
     }
   },
   computed: {
-    cards () {
-      return this.$store.getters['sections/sectionData'](this.sectionName)
-    },
     renderingCards () {
       return this.cards.slice(0, 8)
     }
   },
+  methods: {
+    async fetchSectionCard () {
+      const { archives } = await request('video.index.section_cards', { params: { rid: getRid(this.sectionName), ps: 12 } })
+      this.cards = archives
+    }
+  },
   mounted () {
-    this.$store.dispatch('sections/fetchSection', { region: this.sectionName })
+    this.fetchSectionCard()
   }
 }
 </script>
@@ -96,7 +106,7 @@ export default {
     }
 
     &-btn {
-      .blocking(72px, 22px, flex);
+      .blocking(auto, 22px, flex);
       justify-content: center;
       align-items: center;
       background-color: #fff;
@@ -105,6 +115,7 @@ export default {
       text-align: center;
       font-size: @font-size-small;
       color:#505050;
+      min-width: 52px;
     }
 
     &-options {

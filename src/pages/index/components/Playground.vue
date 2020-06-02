@@ -1,24 +1,17 @@
 <template>
 <div class="playground" @mouseenter="play = true">
   <div class="content">
-    <sprite-preview :aid="83251570" :playing="play"/>
+    <content-section>
+    </content-section>
   </div>
 </div>
 </template>
 <script>
-import SpritePreview from 'Components/common/VideoPreview/SpritePreview'
-
+import ContentSection from 'Index/components/ContentSection'
 export default {
   name: 'Playground',
   components: {
-    SpritePreview
-  },
-  data () {
-    return {
-      play: false
-    }
-  },
-  methods: {
+    ContentSection
   }
 }
 </script>
@@ -32,9 +25,6 @@ export default {
   align-items: center;
   background: #f0f0f0;
   .content {
-    width: 206px;
-    height: 116px;
-    border-radius: 4px;
     background-color: white;
   }
 }

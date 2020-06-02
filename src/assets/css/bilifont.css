@@ -5,12 +5,15 @@
 }
 
 .bilifont {
-  font-family: bilifont !important;
+  display: inline-block;
+  margin-right: 4px;
+  font-family: bilifont, serif !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .bili-zhishi:before {

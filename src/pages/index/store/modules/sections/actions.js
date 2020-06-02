@@ -6,7 +6,7 @@ export default {
   async fetchSection ({ commit }, { region }) {
     const rid = section[region]
     if (!rid) return
-    const result = await request('video.recommend.index_section', { params: { rid, ps: 12 } })
+    const result = await request('video.index.index_section', { params: { rid, ps: 12 } })
     commit(SECTION_UPDATE, {
       section: region,
       data: result.data
