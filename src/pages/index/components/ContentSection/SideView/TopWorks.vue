@@ -25,7 +25,9 @@
         <div class="work__basic">
           <span class="work__title work__title--2lines work__title--bold">{{video.title}}</span>
           <span class="work__subs">
-            <span class="work__up">{{video.author}}</span> · <span>{{video.create.substring(0, 10)}}</span>
+            <span class="work__up">{{video.author}}</span>
+            <span class="work__subs--dot"> · </span>
+            <span>{{video.create.substring(0, 10)}}</span>
           </span>
         </div>
       </div>
@@ -102,7 +104,7 @@ export default {
   &__synopsis {
     .blocking(290px, auto, flex);
     justify-content: space-between;
-    @media screen and (max-width: @screen-wide-micro) {
+    @media screen and (max-width: @screen-size-micro) {
       width: 235px;
     }
   }
@@ -129,6 +131,7 @@ export default {
 
   &__basic {
     .blocking(auto, 100%, flex);
+    min-width: 166px;
     margin-left: 12px;
     flex-direction: column;
     justify-content: space-between;
@@ -150,8 +153,12 @@ export default {
   }
 
   &__subs {
+    .flex-vertical-center();
     font-size: @font-size-small;
     color: @color-deep-gray;
+    &--dot {
+      margin: 0 5px
+    }
   }
 
   &__detail {
@@ -175,7 +182,7 @@ export default {
 
   &__up{
     max-width: 86px;
-    .line-breaking();
+    .line-breaking(1, inline-block);
   }
 }
 </style>

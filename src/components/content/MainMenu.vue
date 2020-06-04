@@ -36,8 +36,8 @@ export default {
 
     margin: 0 20px;
 
-    @media screen and (max-width: @screen-wide-middle) {
-      margin: 0 15px;
+    @media screen and (max-width: @screen-size-middle) {
+      margin: 0 8px;
     }
   }
 }

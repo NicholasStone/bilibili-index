@@ -74,11 +74,27 @@ button {
     width: 1414px;
   }
 
-  @media screen and (max-width: @screen-wide-middle){
+  @media screen and (max-width: @screen-size-middle){
     width: 1198px;
   }
 
-  @media screen and (max-width: @screen-wide-micro){
+  @media screen and (max-width: @screen-size-micro){
     width: 999px;
   }
+}
+
+.bottom-shadow::before {
+  content: '';
+  .p-absoluting(auto, 0, 0, 0);
+  height: 48px;
+  background: repeat-x url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAwCAYAAAGnNCAXAAAABGdBTUEAALGPC/xhBQAAAENJREFUCB1jYGBgYGICEpIgQgqNBRRi4MMmARYDyXKAWLwgggfOAnMJiIH0soJ0sMEJdlQWWBYshpAAK0ZwwSzS1AEAes8Ckyqvlc0AAAAASUVORK5CYII=);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.block {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }

@@ -10,6 +10,7 @@
   </div>
   <div class="section__side_view">
     <side-view :section-name="sectionName">
+      <slot></slot>
     </side-view>
   </div>
 </div>
@@ -50,10 +51,10 @@ export default {
     @media (max-width: @screen-size-wide) {
       width: 1070px;
     }
-    @media (max-width: @screen-wide-middle) {
+    @media (max-width: @screen-size-middle) {
       width: 854px;
     }
-    @media (max-width: @screen-wide-micro) {
+    @media (max-width: @screen-size-micro) {
       width: 710px;
     }
   }

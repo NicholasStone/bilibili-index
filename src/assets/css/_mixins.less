@@ -17,8 +17,8 @@
   flex-direction: @direction;
 }
 
-.line-breaking(@line: 1, @style: ellipsis) {
-  display: if(@line > 1, -webkit-box, inline-block);
+.line-breaking(@line: 1,@display: block, @style: ellipsis) {
+  display: if(@line > 1, -webkit-box, @display);
   word-break: break-all;
   overflow: hidden;
   text-overflow: @style;

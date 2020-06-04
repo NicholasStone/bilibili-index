@@ -1,4 +1,4 @@
-export default function indexDynamicAdapter ({ data: { cards } }) {
+export default function indexDynamicAdapter ({ cards }) {
   return cards.map(({ desc, card }) => {
     return {
       dynamic_id: desc.dynamic_id,

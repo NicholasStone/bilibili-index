@@ -1,5 +1,5 @@
 import indexDynamicAdapter from 'Utils/adapter'
-import request from 'Network/request'
+import { requestLocal } from 'Network/request'
 import { DYNAMICS_UPDATE } from 'Index/store/mutation-types'
 
 export default {
@@ -7,7 +7,7 @@ export default {
   state: {
     videos: [],
     lives: [],
-    articals: []
+    articles: []
   },
   mutations: {
     [DYNAMICS_UPDATE]: (state, payload) => {
@@ -16,7 +16,7 @@ export default {
   },
   actions: {
     getDynamic ({ commit }) {
-      request({ url: '/Dynamics.json' })
+      requestLocal('/Dynamics.json')
         .then(data => commit(DYNAMICS_UPDATE, data))
     }
   },

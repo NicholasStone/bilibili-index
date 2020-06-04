@@ -8,8 +8,8 @@
 </div>
 </template>
 <script>
-import ResizeObserver from 'resize-observer-polyfill'
 import request from 'Network/request'
+import { addResizeListener, removeResizeListener } from 'Utils/handle-resize'
 
 export default {
   name: 'SpritePreview',
@@ -73,6 +73,9 @@ export default {
     async loadPreview () {
       this.preview = await request('video.index.preview_pictures', { params: { aid: this.aid } })
       this.frameLength = this.preview.index.length
+    },
+    handleResize ({ width }) {
+      this.width = width
     }
   },
   watch: {
@@ -81,9 +84,10 @@ export default {
     }
   },
   mounted () {
-    new ResizeObserver(entries => {
-      this.width = entries[0].contentRect.width
-    }).observe(this.$el)
+    addResizeListener(this.$el, this.handleResize)
+  },
+  beforeDestroy () {
+    removeResizeListener(this.$el, this.handleResize)
   }
 }
 

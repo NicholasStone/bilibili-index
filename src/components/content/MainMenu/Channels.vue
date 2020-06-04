@@ -1,14 +1,16 @@
 <template>
   <div class="channel" ref="channel-container">
     <channel-item
+      class="channel-item--response"
       v-for="(channel, index) in channels"
       :key="channel.title"
       :placement="index % 2 ? 'bottom' : 'top'"
       :channel="channel" />
     <channel-item
+      class="channel-item--response"
       v-if="shrank"
       :channel="moreChannels"
-      :placement="bottom" >
+      placement="bottom" >
       更多 <i class="bilifont bili-icon_caozuo_xiangyou-copy"></i>
     </channel-item>
   </div>
@@ -65,4 +67,23 @@ export default {
   .flexing(wrap, space-between, space-between, space-between, column);
   flex: 1;
 }
+
+// .channel-item--response {
+//   &:nth-child(n+15) {
+//     display: block;
+//   }
+//
+//   &:last-child {
+//     display: none;
+//   }
+//   @media screen and (max-width: @screen-size-micro) {
+//     &:nth-child(n+15) {
+//       display: none;
+//     }
+//
+//     &:last-child {
+//       display: block;
+//     }
+//   }
+// }
 </style>

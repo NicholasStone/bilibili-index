@@ -20,10 +20,22 @@ export default function request (api, config = {}) {
   instance.interceptors.response.use(({ data }) => {
     if (data.data) return handleDataProxy(data.data)
     if (data.result) return handleDataProxy(data.result)
-  }, (err) => console.error(err))
+  }, err => console.trace(err))
 
   return instance(options)
 }
+
+export function requestLocal (url, options = {}) {
+  const instance = axios.create({
+    baseURL: 'http://localhost:8080',
+    timeout: 5000
+  })
+
+  instance.interceptors.response.use(({ data }) => data.data, err => console.trace(err))
+
+  return instance(url, options)
+}
+
 // 递归 给所有图片属性添加 /cdn
 export function handleDataProxy (data) {
   const flattedData = flatten(data)

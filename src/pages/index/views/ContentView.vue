@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+  <recommendation class="wrap section--mb"/>
     <content-section
       class="wrap section--mb"
       v-for="section in sections"
@@ -10,9 +11,11 @@
 
 <script>
 import ContentSection from 'Index/components/ContentSection'
+import Recommendation from 'Index/components/Recommendation'
 export default {
   name: 'Content',
   components: {
+    Recommendation,
     ContentSection
   },
   computed: {

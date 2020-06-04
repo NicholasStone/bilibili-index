@@ -1,18 +1,15 @@
 <template>
-<div class="playground" @mouseenter="play = true">
-  <div class="content">
-    <content-section>
-    </content-section>
+  <div class="playground">
+    <div class="content">
+      <recommendation class="wrap"></recommendation>
+    </div>
   </div>
-</div>
 </template>
 <script>
-import ContentSection from 'Index/components/ContentSection'
+import Recommendation from 'Index/components/Recommendation'
 export default {
   name: 'Playground',
-  components: {
-    ContentSection
-  }
+  components: { Recommendation }
 }
 </script>
 <style lang="less" scoped>
@@ -24,6 +21,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: #f0f0f0;
+
   .content {
     background-color: white;
   }

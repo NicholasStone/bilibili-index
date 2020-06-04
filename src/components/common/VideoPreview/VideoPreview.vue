@@ -1,6 +1,6 @@
 <template>
   <div
-    class="video-preview"
+    class="video-preview bottom-shadow"
     @mouseenter="showDanmakuSprite"
     @mouseleave="hideDanmakuSprite">
     <i class="video-preview__crown" :class="crownType"></i>
@@ -99,14 +99,6 @@ export default {
   .blocking(100%, 100%);
   position: relative;
   border-radius: 2px;
-
-  &::before {
-    content: '';
-    .p-absoluting(auto, 0, 0, 0);
-    height: 48px;
-    background: repeat-x url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAwCAYAAAGnNCAXAAAABGdBTUEAALGPC/xhBQAAAENJREFUCB1jYGBgYGICEpIgQgqNBRRi4MMmARYDyXKAWLwgggfOAnMJiIH0soJ0sMEJdlQWWBYshpAAK0ZwwSzS1AEAes8Ckyqvlc0AAAAASUVORK5CYII=);
-    border-radius: 2px;
-  }
 
   .info {
     .blocking(100%, 28px);
