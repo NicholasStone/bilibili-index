@@ -18,50 +18,18 @@
     </div>
   </header>
   <main class="card-view__panel">
-    <slot name="card-panel">
-      <video-card
-        v-for="card in renderingCards"
-        :key="card.bvid"
-        :video="card"/>
-    </slot>
+    <slot></slot>
   </main>
 </div>
 </template>
-<script>
-import VideoCard from './CardView/VideoCard'
-import request from 'Network/request'
-import { getRid } from 'Network/api'
 
+<script>
 export default {
   name: 'CardView',
-  components: {
-    VideoCard
-  },
-  props: {
-    sectionName: {
-      type: String,
-      required: true
-    }
-  },
   data () {
     return {
-      cards: [],
       loading: false
     }
-  },
-  computed: {
-    renderingCards () {
-      return this.cards.slice(0, 8)
-    }
-  },
-  methods: {
-    async fetchSectionCard () {
-      const { archives } = await request('video.index.section_cards', { params: { rid: getRid(this.sectionName), ps: 12 } })
-      this.cards = archives
-    }
-  },
-  mounted () {
-    this.fetchSectionCard()
   }
 }
 </script>
@@ -86,10 +54,10 @@ export default {
     @media (max-width: @screen-size-wide) {
       width: 1070px;
     }
-    @media (max-width: @screen-wide-middle) {
+    @media (max-width: @screen-size-middle) {
       width: 854px;
     }
-    @media (max-width: @screen-wide-micro) {
+    @media (max-width: @screen-size-micro) {
       width: 710px;
     }
   }
@@ -131,7 +99,7 @@ export default {
   &__panel {
     .blocking(100%, 404px, flex);
     .flexing(wrap, space-between, space-between, space-between);
-    @media screen and (max-width: @screen-wide-micro) {
+    @media screen and (max-width: @screen-size-micro) {
       height: 360px;
     }
   }

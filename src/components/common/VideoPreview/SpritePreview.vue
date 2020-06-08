@@ -71,7 +71,7 @@ export default {
       this.percentage = layerX / this.width
     },
     async loadPreview () {
-      this.preview = await request('video.index.preview_pictures', { params: { aid: this.aid } })
+      this.preview = await request({ api: 'video.index.preview_pictures', params: { aid: this.aid } })
       this.frameLength = this.preview.index.length
     },
     handleResize ({ width }) {

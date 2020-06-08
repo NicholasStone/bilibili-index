@@ -1,5 +1,5 @@
 <template>
-<div class="work">
+<div class="work" v-if="!videoType">
   <div class="work__container" v-popover:[ref] @mouseenter="active = true" @mouseleave="active = false">
     <div class="work__ranking" :class="index <= 3 ? 'work__ranking--top3' : 'work__ranking--others'">{{index}}</div>
     <a :class="['work__synopsis work__synopsis--response', {'work__synopsis--top': index === 1}]">
@@ -40,10 +40,17 @@
     </div>
   </popover>
 </div>
+<div v-else class="work work__container">
+  <div class="work__ranking" :class="index <= 3 ? 'work__ranking--top3' : 'work__ranking--others'">{{index}}</div>
+  <a class="work__synopsis work__synopsis--response" :title="video.title">
+    <span class="work__title hover-text-blue">{{video.title}}</span>
+    <span class="work__subs work__subs--update">{{video.new_ep.index_show}}</span>
+  </a>
+</div>
 </template>
 <script>
 import WatchLater from 'Components/common/WatchLater/WatchLater'
-import Popover from 'Components/common/Popover/Popover'
+import Popover from 'Components/common/Popover'
 import { generateId } from 'Utils/popover'
 import { tenThousand } from 'Utils/utils'
 
@@ -68,6 +75,11 @@ export default {
     return {
       ref: `detail-${generateId()}`,
       active: false
+    }
+  },
+  computed: {
+    videoType () {
+      return Object.prototype.hasOwnProperty.call(this.video, 'badge')
     }
   },
   filters: {
@@ -158,6 +170,11 @@ export default {
     color: @color-deep-gray;
     &--dot {
       margin: 0 5px
+    }
+
+    &--update {
+      min-width: 90px;
+      text-align: right;
     }
   }
 

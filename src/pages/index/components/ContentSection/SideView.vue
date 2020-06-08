@@ -9,52 +9,20 @@
     </slot>
   </header>
   <main class="side-view__ranking">
-    <slot>
-      <top-work
-        class="side-view--wrap"
-        v-for="(video, i) in rank"
-        :key="video.bvid"
-        :index="i + 1"
-        :show-cover="i === 0"
-        :video="video" />
-    </slot>
+    <slot></slot>
   </main>
 </div>
 </template>
 <script>
-import TopWork from 'Index/components/ContentSection/SideView/TopWorks'
-import request from 'Network/request'
-import { getRid } from 'Network/api'
 export default {
-  name: 'SideView',
-  components: { TopWork },
-  props: {
-    sectionName: {
-      type: String,
-      required: true
-    }
-  },
-  data () {
-    return {
-      rank: []
-    }
-  },
-  methods: {
-    async fetchSectionRank () {
-      const r = await request('video.index.section_ranking', { params: { rid: getRid(this.sectionName), day: 3, original: 0 } })
-      this.rank = Object.values(r).slice(0, 10)
-    }
-  },
-  mounted () {
-    this.fetchSectionRank()
-  }
+  name: 'SideView'
 }
 </script>
 <style lang="less" scoped>
 .side-view {
   .blocking(320px, 100%);
   background-color: #fff;
-  @media screen and (max-width: @screen-wide-micro) {
+  @media screen and (max-width: @screen-size-micro) {
     width: 265px;
   }
 
@@ -81,8 +49,8 @@ export default {
   }
 
   &--wrap {
-    @media screen and (max-width: @screen-wide-micro) {
-      &:nth-child(n+9){
+    @media screen and (max-width: @screen-size-micro) {
+      &:nth-child(n+9) {
         display: none;
       }
     }

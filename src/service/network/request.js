@@ -3,26 +3,26 @@ import { flatten, unflatten } from 'flat'
 
 import requestOptions from './api'
 
-export default function request (api, config = {}) {
-  const baseURL = 'http://localhost:8080/api'
-  const options = requestOptions(api, config)
-  if (!options) return null
-  const instance = axios.create({
-    // baseURL,
-    timeout: 5000
-  })
+const BASE_URL = 'http://localhost:8080/api'
+
+export default function request ({ api, params, onRequest, onResponse }) {
+  const { adapter, ...options } = requestOptions(api, params)
+
+  const instance = axios.create({ timeout: 5000 })
 
   instance.interceptors.request.use(config => {
-    config.url = baseURL + '/' + config.url
+    if (onRequest) onResponse()
+    config.url = BASE_URL + '/' + config.url
     return config
   })
 
   instance.interceptors.response.use(({ data }) => {
+    if (onResponse) onResponse()
     if (data.data) return handleDataProxy(data.data)
     if (data.result) return handleDataProxy(data.result)
   }, err => console.trace(err))
 
-  return instance(options)
+  return instance(options).then(data => adapter ? Promise.resolve(adapter(data)) : Promise.resolve(data))
 }
 
 export function requestLocal (url, options = {}) {

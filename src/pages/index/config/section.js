@@ -20,7 +20,7 @@
 
 export const ENTERTAINMENT = 'entertainment'
 export const MOVIE = 'movie'
-export const NEWS = 'news'
+export const INFORMATION = 'information'
 export const FASHION = 'fashion'
 export const KICHIKU = 'kichiku'
 export const LIFE = 'life'
@@ -39,7 +39,7 @@ export const DOCUMENTARY = 'documentary'
 export default {
   [ENTERTAINMENT]: 5,
   [MOVIE]: 23,
-  [NEWS]: 202,
+  [INFORMATION]: 202,
   [FASHION]: 155,
   [KICHIKU]: 119, // 鬼畜
   [LIFE]: 160,

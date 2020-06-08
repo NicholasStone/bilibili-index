@@ -67,7 +67,9 @@ module.exports = {
     'style-resources-loader': {
       preProcessor: 'less',
       patterns: [
-        path.resolve(__dirname, './src/assets/css/base.less'),
+        path.resolve(__dirname, './src/assets/css/_variable.less'),
+        path.resolve(__dirname, './src/assets/css/_mixins.less'),
+        path.resolve(__dirname, './src/assets/css/_common.less'),
       ],
     },
   },

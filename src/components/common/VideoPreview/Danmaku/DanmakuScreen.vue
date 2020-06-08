@@ -70,8 +70,9 @@ export default {
       clearTimeout(this.timeout)
     },
     async loadDanmaku () {
-      const data = await request('video.index.danmaku', { params: { aid: this.aid } })
-      this.danmaku = Object.values(data)
+      // const data = await request({ api: 'video.index.danmaku', params: { aid: this.aid } })
+      // this.danmaku = Object.values(data)
+      this.danmaku = await request({ api: 'video.index.danmaku', params: { aid: this.aid } })
     }
   },
   watch: {

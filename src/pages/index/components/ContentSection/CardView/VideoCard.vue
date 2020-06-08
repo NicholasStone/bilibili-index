@@ -1,10 +1,10 @@
 <template>
 <div class="video-card">
-  <a href="#" class="video-card__video">
+  <a :href="link" class="video-card__video">
     <video-preview :video="video" />
   </a>
-  <a class="video-card__title hover-text-blue" :title="title">{{title}}</a>
-  <a class="video-card__up hover-text-blue">
+  <a class="video-card__title hover-text-blue" :title="title" :href="link">{{title}}</a>
+  <a class="video-card__up hover-text-blue" :href="up_space">
     <i class="bilifont bili-icon_xinxi_UPzhu"></i>
     {{up}}
   </a>
@@ -36,11 +36,17 @@ export default {
     up () {
       return this.video.owner.name
     },
+    up_space () {
+      return 'https://space.bilibili.com/' + this.video.owner.mid
+    },
     cover () {
       return this.video.pic
     },
     state () {
       return this.video.stat
+    },
+    link () {
+      return 'https://www.bilibili.com/video/' + this.bvid
     }
   }
 }
@@ -48,12 +54,12 @@ export default {
 <style lang="less" scoped>
 .video-card {
   width: 206px;
-  @media screen and (max-width: @screen-wide-micro) {
+  @media screen and (max-width: @screen-size-micro) {
     width: 170px;
   }
   &__video {
     .blocking(100%, 116px);
-    @media screen and (max-width: @screen-wide-micro) {
+    @media screen and (max-width: @screen-size-micro) {
       height: 96px;
     }
   }

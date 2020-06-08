@@ -1,26 +1,31 @@
 <template>
   <div class="container">
-  <recommendation class="wrap section--mb"/>
-    <content-section
+    <elevator/>
+    <recommendation class="wrap section--mb"/>
+    <component
       class="wrap section--mb"
       v-for="section in sections"
       :key="section.name"
-      :section="section"></content-section>
+      :is="section.component || 'ContentSection'"
+      :section="section">
+    </component>
   </div>
 </template>
 
 <script>
 import ContentSection from 'Index/components/ContentSection'
 import Recommendation from 'Index/components/Recommendation'
+import Elevator from 'Index/components/Elevator'
+
 export default {
-  name: 'Content',
   components: {
+    Elevator,
     Recommendation,
     ContentSection
   },
   computed: {
     sections () {
-      return this.$store.getters['sections/category']
+      return this.$store.getters['sections/categories']
     }
   }
 }
@@ -30,7 +35,7 @@ export default {
 .container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

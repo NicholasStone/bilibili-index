@@ -65,6 +65,10 @@ export default {
     padding: 26px 10px 10px;
     transition: top .2s ease;
     z-index: 5;
+
+    @media screen and (max-width: @screen-size-micro) {
+      padding-top: 8px;
+    }
   }
 
   &__title {

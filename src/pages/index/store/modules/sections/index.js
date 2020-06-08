@@ -1,25 +1,25 @@
 import getters from './getters'
 import mutations from './mutations'
-import actions from './actions'
 import {
-  ENTERTAINMENT,
+  // ENTERTAINMENT,
   MOVIE,
-  NEWS,
-  FASHION,
-  KICHIKU,
-  LIFE,
-  DIGITAL,
-  TECHNOLOGY,
-  DANCE,
-  MUSIC,
-  GAMES,
-  DOMESTIC_RELATED,
-  BANGUMI_DYNAMIC,
-  DOUGA,
-  SOAP_OPERA,
-  TV_SHOW,
-  DOCUMENTARY
+  // NEWS,
+  // FASHION,
+  // KICHIKU,
+  // LIFE,
+  DIGITAL
+  // TECHNOLOGY,
+  // DANCE,
+  // MUSIC,
+  // GAMES,
+  // DOMESTIC_RELATED,
+  // BANGUMI_DYNAMIC,
+  // DOUGA,
+  // SOAP_OPERA,
+  // TV_SHOW,
+  // DOCUMENTARY
 } from 'Index/config/section'
+import category from 'Index/store/modules/sections/category'
 
 export default {
   namespaced: true,
@@ -27,21 +27,8 @@ export default {
     sections: [
       DIGITAL, MOVIE
     ],
-    category: [
-      /**
-       * name: 分区标题
-       * section: 对应state中分区的名字
-       * icon: 标题前的图标
-       * order: 分区顺序
-       */
-      { title: '动画', name: DOUGA, icon: 'douga', order: 0 },
-      { title: '数码', name: DIGITAL, icon: 'digital', order: 1 },
-      { title: '电影', name: MOVIE, icon: 'movie', order: 2 },
-      { title: '游戏', name: GAMES, icon: 'games', order: 3 },
-      { title: '音乐', name: MUSIC, icon: 'music', order: 4 }
-    ]
+    category
   },
   getters,
-  actions,
   mutations
 }

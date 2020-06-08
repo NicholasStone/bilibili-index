@@ -1,7 +1,7 @@
 // TODO: 继续接驳
 import { HISTORY_UPDATE } from 'Index/store/mutation-types'
 import indexDynamicAdapter from 'Utils/adapter'
-import request from 'Network/request'
+import request, { requestLocal } from 'Network/request'
 
 export default {
   namespaced: true,
@@ -16,7 +16,7 @@ export default {
   },
   actions: {
     getDynamic ({ commit }) {
-      request({ url: '/History.json' })
+      requestLocal('/History.json')
         .then(data => commit(HISTORY_UPDATE, data))
     }
   },

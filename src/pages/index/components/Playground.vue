@@ -1,29 +1,28 @@
 <template>
   <div class="playground">
-    <div class="content">
-      <recommendation class="wrap"></recommendation>
+    <div class="content wrap">
+      <elevator/>
     </div>
   </div>
 </template>
 <script>
-import Recommendation from 'Index/components/Recommendation'
+import Elevator from 'Index/components/Elevator'
 export default {
   name: 'Playground',
-  components: { Recommendation }
+  components: { Elevator }
 }
 </script>
 <style lang="less" scoped>
 .playground {
   position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f0f0;
-
+  width: auto;
+  height: 1000%;
+  background: @color-deep-gray;
+  margin-top: 300px;
   .content {
-    background-color: white;
+    background-color: @color-light-gray;
+    height: 100%;
+    position: relative;
   }
 }
 </style>

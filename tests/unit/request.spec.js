@@ -1,9 +1,16 @@
 import request, { handleDataProxy } from '../../src/service/network/request'
+import requestOptions from 'Network/api'
+import section, { MOVIE } from 'Index/config/section'
 
-test('api proxy', async () => {
-  request('video.info.preview_pictures', { params: { aid: 17254855 } }).then(data => {
-    expect(data).toHaveProperty('code.data.pvdata', '//i0.hdslb.com/bfs/videoshot/28199639.bin')
-  })
+it('should fetch section data', async () => {
+  expect.assertions(1)
+  await expect(request({
+    api: 'video.index.publication_ranking',
+    params: {
+      season_type: 2,
+      day: 3
+    }
+  })).resolves.toBeTruthy()
 }, 30000)
 
 test('handle proxy data', () => {
@@ -718,6 +725,20 @@ test('handle proxy data', () => {
 
 it('should fetch rank list', async () => {
   expect.assertions(1)
-  await expect(request('video.index.section_ranking', { params: { rid: 188, day: 3, original: 0 } })).resolves
-    .toHaveProperty('code', 0)
+  await expect(request({ api: 'video.index.section_ranking', params: { rid: 188, day: 3, original: 0 } })).resolves
+    .toBeTruthy()
+}, 30000)
+
+it('should generate request options', function () {
+  expect(requestOptions('video.index.publication_ranking', {
+    season_type: 2,
+    day: 3
+  })).toEqual({
+    url: 'https://api.bilibili.com/pgc/web/rank/list',
+    method: 'GET',
+    params: {
+      season_type: 2,
+      day: 3
+    }
+  })
 })

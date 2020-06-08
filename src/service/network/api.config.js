@@ -18,7 +18,9 @@ export const apiList = {
         verify: false,
         params: {
           aid: 'av号'
-        }
+        },
+        comment: '弹幕列表',
+        adapter: data => Object.values(data)
       },
       section_cards: {
         url: 'https://api.bilibili.com/x/web-interface/dynamic/region',
@@ -27,7 +29,9 @@ export const apiList = {
         params: {
           ps: '数量',
           rid: 'section id'
-        }
+        },
+        comment: '本区视频推荐',
+        adapter: ({ archives }) => archives
       },
       section_ranking: {
         url: 'https://api.bilibili.com/x/web-interface/ranking/region',
@@ -38,7 +42,8 @@ export const apiList = {
           day: '最近 n 日',
           original: '不知道干什么的，好像不加也没问题'
         },
-        comment: '本区排行榜'
+        comment: '本区排行榜',
+        adapter: data => Object.values(data).slice(0, 10)
       },
       publication_ranking: {
         url: 'https://api.bilibili.com/pgc/web/rank/list',
@@ -47,6 +52,15 @@ export const apiList = {
         params: {
           season_type: '出版物的类型 1动漫, 2电影, 3纪录片, 4国动, 5电视剧',
           day: '最近n日'
+        },
+        adapter: (data) => data.list.slice(0, 10)
+      },
+      slide_show: {
+        url: 'https://api.bilibili.com/pgc/operation/api/slideshow?position_id=104',
+        method: 'GET',
+        verify: false,
+        params: {
+          position_id: '104 日漫，101国漫'
         }
       }
     },
