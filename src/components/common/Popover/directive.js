@@ -11,10 +11,6 @@ const getReference = (el, binding, vnode) => {
 }
 
 export default {
-  bind (el, binding, vnode) {
-    getReference(el, binding, vnode)
-  },
-  inserted (el, binding, vnode) {
-    getReference(el, binding, vnode)
-  }
+  bind: getReference,
+  inserted: getReference
 }

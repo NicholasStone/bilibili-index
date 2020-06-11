@@ -157,6 +157,9 @@ export default {
     &&--2lines {
       height: 40px;
       .line-breaking(2);
+      @media screen and (max-width: @screen-size-micro) {
+        width: 111px;
+      }
     }
 
     &&--bold {

@@ -14,20 +14,19 @@
       <li
         v-for="item in categories"
         :key="item.name"
-        :class="['item', 'hover-highlight-blue', { on: pageOffset >= item.offsetY && pageOffset <= (item.offsetY + item.height + 40) }]"
+        :class="['item', 'hover-highlight-blue', { on: inRange(item) }]"
         @click="goToSection(item.name)">
         {{item.title}}
       </li>
     </transition-group>
   </draggable>
-  <div :class="['elevator__sort', 'hover-highlight-blue',{on: editing}]" @click="editing = !editing"><i class="bilifont bili-icon_youdaohang_paixu"></i></div>
+  <div :class="['elevator__sort', 'hover-highlight-blue',{ on: editing }]" @click="editing = !editing"><i class="bilifont bili-icon_youdaohang_paixu"></i></div>
   <div class="elevator__back-top hover-highlight-blue" @click="scrollToTop"><i class="bilifont bili-general_pullup_s"></i></div>
 </div>
 </template>
 <script>
 import Draggable from 'vuedraggable'
 import { UPDATE_CATEGORIES } from 'Index/store/mutation-types'
-import { generateSectionId } from 'Utils/utils'
 
 export default {
   name: 'Elevator',
@@ -39,7 +38,9 @@ export default {
       sorting: false,
       editing: false,
       pageOffset: 0,
-      height: 0
+      height: 0,
+      sectionRefs: [],
+      anchors: []
     }
   },
   computed: {
@@ -70,12 +71,43 @@ export default {
       document.body.scrollTop = document.documentElement.scrollTop = 0
     },
     goToSection (name) {
+      if (this.sorting) return
+      this.sectionRefs.find(item => item.floor === name).el.scrollIntoView()
       // 不能用 scrollTop ，也不能用 scrollTo()
-      document.querySelector(generateSectionId(name)).scrollIntoView()
+      // document.querySelector(generateSectionId(name)).scrollIntoView()
     },
     handleScroll () {
-      this.pageOffset = parseInt(window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop)
-      console.log(this.pageOffset)
+      this.pageOffset = Math.floor(document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset)
+    },
+    inRange ({ name }) {
+      const anchor = this.anchors.find(item => item.floor === name)
+      if (anchor) {
+        const { offsetY, height } = anchor
+        return this.pageOffset >= offsetY && this.pageOffset <= (offsetY + height + 40)
+      } else {
+        return false
+      }
+    },
+    // 更新锚点信息
+    updateAnchors: function () {
+      this.anchors = this.sectionRefs.map(({ el, floor }) => {
+        const { height, y } = el.getBoundingClientRect()
+        return {
+          height: Math.floor(height + 40),
+          offsetY: Math.floor(y + window.pageYOffset),
+          floor
+        }
+      })
+    },
+    handleRect (floor, { height, y: offsetY }) {
+      return {
+        floor, height, offsetY
+      }
+    }
+  },
+  watch: {
+    editing (val) {
+      if (!val) this.updateAnchors()
     }
   },
   mounted () {
@@ -97,14 +129,16 @@ export default {
 }
 .elevator {
   width: 56px;
-  margin-left: 85%;
-  // margin-top: -100%;
-  // margin-bottom: -15%;
+  margin-left: 70%;
   position: sticky;
   top: 100px;
   background-color: transparent;
   font-size: @font-size-small;
   z-index: 100;
+  // TODO: elevator的定位问题
+  @media screen and (max-width: 1930px) {
+    margin-left: 90%;
+  }
   &__mask {
     position: fixed;
     top: 0;
