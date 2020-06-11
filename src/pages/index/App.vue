@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
-<!--    <navbar />-->
-<!--    <banner/>-->
-<!--    <main-menu />-->
-<!--    <content-view />-->
-<!--    <customer-service />-->
-<!--    <index-footer />-->
-    <playground />
+  <div class="container" id="app">
+   <navbar />
+   <banner/>
+   <main-menu />
+   <content-view />
+   <customer-service />
+   <index-footer />
+    <!-- <playground /> -->
   </div>
 </template>
 

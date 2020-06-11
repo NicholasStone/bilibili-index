@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap content-section">
+  <div class="wrap content-section" :id="id">
     <div class="section__card-view">
       <card-view :section-name="sectionName">
         <template slot="card-title">
@@ -41,6 +41,7 @@ import TopWorks from 'Index/components/ContentSection/SideView/TopWorks'
 import VideoCard from 'Index/components/ContentSection/CardView/VideoCard'
 
 import request from 'Network/request'
+import { generateSectionId } from 'Utils/utils'
 import { getRid } from 'Network/api'
 export default {
   name: 'ContentSection',
@@ -84,6 +85,9 @@ export default {
     },
     rankComponentProps () {
       return this.rankConfig && this.rankConfig.props
+    },
+    id () {
+      return generateSectionId(this.sectionName)
     }
   },
   methods: {

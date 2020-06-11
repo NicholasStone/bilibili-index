@@ -1,13 +1,14 @@
 const express = require('express')
 const path = require('path')
 const proxy = require('./proxy')
+require('dotenv').config()
 
 module.exports = function (app) {
   app.use(express.static(path.resolve(__dirname, 'public')))
 
   app.get('/api/*', (req, resp) => {
     resp.set({
-      'Access-Control-Allow-Origin': 'http://localhost',
+      'Access-Control-Allow-Origin': process.env.DEV_ENV === 'local' ? 'http://localhost:8080' : process.env.REMOTE_PUBLIC_HOST,
       'Access-Control-Allow-Credentials': true
     })
     proxy(req, resp, 'http://api.bilibili.com/')

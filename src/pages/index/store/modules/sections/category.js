@@ -7,6 +7,7 @@ import FocusPicture from 'Index/components/ContentSection/SideView/FocusPicture'
  *    name: 对应state中分区的名字
  *    icon: 标题前的图标
  *    order: 分区顺序
+ *    offsetY: 分区距离页面顶部的高度，用于导航定位，在渲染时动态生成
  *    component: 使用的组件
  *    cards: 左边的卡片分区
  *    ranks: 右边的列表分区
@@ -14,13 +15,14 @@ import FocusPicture from 'Index/components/ContentSection/SideView/FocusPicture'
  */
 
 export default [
-  { title: '动画', name: DOUGA, icon: 'douga', order: 0 },
-  { title: '数码', name: DIGITAL, icon: 'digital', order: 1 },
+  { title: '动画', name: DOUGA, icon: 'douga', order: 0, offsetY: 0 },
+  { title: '数码', name: DIGITAL, icon: 'digital', order: 1, offsetY: 0 },
   {
     title: '电影',
     name: MOVIE,
     icon: 'movie',
     order: 2,
+    offsetY: 0,
     // cards: {
     //   data: {
     //     api: 'video.index.section_cards',
@@ -41,13 +43,14 @@ export default [
       }
     }
   },
-  { title: '游戏', name: GAMES, icon: 'games', order: 3 },
-  { title: '音乐', name: MUSIC, icon: 'music', order: 4 },
+  { title: '游戏', name: GAMES, icon: 'games', order: 3, offsetY: 0 },
+  { title: '音乐', name: MUSIC, icon: 'music', order: 4, offsetY: 0 },
   {
     title: '资讯',
     name: INFORMATION,
     icon: 'information',
     order: 5,
+    offsetY: 0,
     ranks: {
       title: '资讯分区正式上线啦！',
       component: FocusPicture,

@@ -16,6 +16,9 @@
 import ContentSection from 'Index/components/ContentSection'
 import Recommendation from 'Index/components/Recommendation'
 import Elevator from 'Index/components/Elevator'
+import { generateSectionId } from 'Utils/utils'
+import { UPDATE_SECTION_OFFSET } from 'Index/store/mutation-types'
+import { addResizeListener, removeResizeListener } from 'Utils/handle-resize'
 
 export default {
   components: {
@@ -27,6 +30,24 @@ export default {
     sections () {
       return this.$store.getters['sections/categories']
     }
+  },
+  methods: {
+    getSectionsYOffset () {
+      this.sections.map(item => {
+        const sectionId = generateSectionId(item.name)
+        const el = document.getElementById(sectionId)
+        const offset = el.getBoundingClientRect().y + window.pageYOffset
+        const height = el.scrollHeight
+        this.$store.commit(`sections/${UPDATE_SECTION_OFFSET}`, { name: item.name, offset, height })
+      })
+    }
+  },
+  mounted () {
+    // this.getSectionsYOffset()
+    addResizeListener(this.$el, this.getSectionsYOffset)
+  },
+  beforeDestroy () {
+    removeResizeListener(this.$el, this.getSectionsYOffset)
   }
 }
 </script>

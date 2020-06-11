@@ -6,3 +6,7 @@ export function randomNumber (min = 0, max = 1, fixed = 3) {
 export function tenThousand (n, fixed = 1) {
   return n <= 9999 ? n : (n / 10000).toFixed(fixed) + '万'
 }
+
+export function generateSectionId (name) {
+  return `section-${name}`
+}
