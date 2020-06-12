@@ -111,6 +111,7 @@ export default {
   .content-section {
     display: flex;
     justify-content: space-between;
+    min-width: 999px;
   }
 
   .section__card-view {

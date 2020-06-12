@@ -14,7 +14,7 @@
       <li
         v-for="item in categories"
         :key="item.name"
-        :class="['item', 'hover-highlight-blue', { on: inRange(item) }]"
+        :class="['item', 'hover-highlight-blue', { on: inRange(anchors.find(i => i.floor === item.name)) }]"
         @click="goToSection(item.name)">
         {{item.title}}
       </li>
@@ -77,16 +77,19 @@ export default {
       // document.querySelector(generateSectionId(name)).scrollIntoView()
     },
     handleScroll () {
-      this.pageOffset = Math.floor(document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset)
+      this.pageOffset = Math.floor(document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset) + 100
     },
-    inRange ({ name }) {
-      const anchor = this.anchors.find(item => item.floor === name)
-      if (anchor) {
-        const { offsetY, height } = anchor
-        return this.pageOffset >= offsetY && this.pageOffset <= (offsetY + height + 40)
-      } else {
-        return false
-      }
+    inRange (archer) {
+      if (!archer) return
+      const { offsetY, height } = archer
+      return this.pageOffset >= offsetY && this.pageOffset <= (offsetY + height + 40)
+      // const anchor = this.anchors.find(item => item.floor === name)
+      // if (anchor) {
+      //   const { offsetY, height } = anchor
+      //   return this.pageOffset >= offsetY && this.pageOffset <= (offsetY + height + 40)
+      // } else {
+      //   return false
+      // }
     },
     // 更新锚点信息
     updateAnchors: function () {
@@ -98,11 +101,6 @@ export default {
           floor
         }
       })
-    },
-    handleRect (floor, { height, y: offsetY }) {
-      return {
-        floor, height, offsetY
-      }
     }
   },
   watch: {
