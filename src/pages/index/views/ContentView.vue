@@ -3,7 +3,7 @@
     <elevator ref="elevator"/>
     <recommendation class="wrap section--mb"/>
     <component
-      class="wrap section--mb"
+      class="wrap"
       v-for="section in sections"
       v-elevator:elevator="section.name"
       :key="section.name"
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .container {
   position: relative;
   width: 100%;

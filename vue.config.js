@@ -3,7 +3,7 @@ const server = require('./server')
 require('dotenv').config()
 
 const devServer = {
-  host: '0.0.0.0',
+  host: 'localhost',
   port: process.env.DEV_SERVER_PORT,
   disableHostCheck: true,
   before: server,
@@ -11,6 +11,7 @@ const devServer = {
 }
 
 if (process.env.DEV_ENV !== 'local'){
+  devServer.host = `${process.env.REMOTE_PUBLIC_HOST}`
   devServer.public = process.env.REMOTE_PUBLIC_HOST
 }
 

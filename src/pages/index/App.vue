@@ -1,12 +1,12 @@
 <template>
   <div class="container" id="app">
-   <navbar />
-   <banner/>
-   <main-menu />
-   <content-view />
-   <customer-service />
-   <index-footer />
-    <!-- <playground /> -->
+<!--   <navbar />-->
+<!--   <banner/>-->
+<!--   <main-menu />-->
+<!--   <content-view />-->
+<!--   <customer-service />-->
+<!--   <index-footer />-->
+    <playground />
   </div>
 </template>
 
@@ -38,7 +38,7 @@ export default {
 @import '~Assets/css/base.less';
 .container {
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: @color-white;
 }
 </style>

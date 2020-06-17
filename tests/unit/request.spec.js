@@ -742,3 +742,21 @@ it('should generate request options', function () {
     }
   })
 })
+
+it('should convert timeline data format', async function () {
+  expect.assertions(1)
+  await expect(request({ api: 'video.index.anime_timeline', params: { season_type: 1 } })).resolves
+    .toBeTruthy()
+})
+
+it('should fetch manga data', async function () {
+  expect.assertions(1)
+  await expect(request({
+    api: 'manga.index.recommend_card',
+    data: {
+      type: 1,
+      page_size: 12,
+      page_num: 1
+    }
+  })).resolves.toBeTruthy()
+}, 30000)

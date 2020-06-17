@@ -29,8 +29,9 @@ export const TECHNOLOGY = 'technology'
 export const DANCE = 'dance'
 export const MUSIC = 'music'
 export const GAMES = 'games'
-export const DOMESTIC_RELATED = 'domestic_related'
-export const BANGUMI_DYNAMIC = 'bangumi_dynamic'
+export const GUOCHUANG = 'guochuang'
+export const GUOCHUANG_RELATED = 'guochuang_related'
+export const ANIME = 'anime'
 export const DOUGA = 'douga'
 export const SOAP_OPERA = 'soap_opera'
 export const TV_SHOW = 'tv_show'
@@ -48,8 +49,8 @@ export default {
   [DANCE]: 129,
   [MUSIC]: 3,
   [GAMES]: 4,
-  [DOMESTIC_RELATED]: 168, // 国产原创相关
-  [BANGUMI_DYNAMIC]: 13, // 番剧动态
+  [GUOCHUANG_RELATED]: 168, // 国产原创相关
+  [ANIME]: 13, // 番剧动态
   [DOUGA]: 1, // 动画
   [SOAP_OPERA]: 11, // 电视剧
   [TV_SHOW]: 181, // 影视

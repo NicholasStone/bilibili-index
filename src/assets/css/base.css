@@ -13,7 +13,7 @@
   background: #f4f4f4;
 }
 .hover-text-blue:hover {
-  transition: color 0.2s linear;
+  transition: color 0.2s;
   color: #00a1d6 !important;
 }
 .flex-vertical-center {

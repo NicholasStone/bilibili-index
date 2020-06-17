@@ -4,7 +4,7 @@
     <video-preview :video="video" />
   </a>
   <a class="video-card__title hover-text-blue" :title="title" :href="link">{{title}}</a>
-  <a class="video-card__up hover-text-blue" :href="up_space">
+  <a class="video-card__up hover-text-blue" :href="up_space" v-if="!hideUp">
     <i class="bilifont bili-icon_xinxi_UPzhu"></i>
     {{up}}
   </a>
@@ -18,6 +18,10 @@ export default {
     video: {
       type: Object,
       require: true
+    },
+    hideUp: {
+      type: Boolean,
+      default: false
     }
   },
   components: {

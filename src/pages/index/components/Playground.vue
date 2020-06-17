@@ -1,52 +1,30 @@
 <template>
   <div class="playground">
     <div class="content wrap">
-       <elevator/>
-<!--      <draggable v-model="categories" tag="ul" animation="200">-->
-<!--        <transition-group type="transition" name="flip-list">-->
-<!--          <li v-for="item in categories" :key="item.name">{{item.title}}</li>-->
-<!--        </transition-group>-->
-<!--      </draggable>-->
-      <!-- <pre>{{categories}}</pre> -->
+      <manga-card v-bind="comics"/>
     </div>
   </div>
 </template>
 <script>
-import Elevator from 'Index/components/Elevator'
-import Draggable from 'vuedraggable'
-import { UPDATE_CATEGORIES } from 'Index/store/mutation-types'
-import { mapMutations } from 'vuex'
+import MangaCard from 'Index/components/ContentSection/CardView/MangaCard'
+import request from 'Network/request'
 export default {
   name: 'Playground',
   // eslint-disable-next-line
-  components: { Elevator, Draggable },
+  components: { MangaCard },
   data () {
     return {
-      drag: false
+      comics: null
     }
   },
-  computed: {
-    categories: {
-      get () {
-        return this.$store.getters['sections/categories']
-      },
-      set (val) {
-        this.updateCategories(val)
-      }
-    },
-    dragOptions () {
-      return {
-        animation: 200
-        // group: 'description',
-        // disabled: false,
-        // ghostClass: 'ghost'
-      }
-    }
-  },
+  computed: {},
   methods: {
-    ...mapMutations({
-      updateCategories: `sections/${UPDATE_CATEGORIES}`
-    })
+    async fetchMangaData () {
+      this.comics = (await request({ api: 'manga.index.recommend_card', data: { type: 1, page_size: 12, page_num: 1 } }))[0]
+    }
+  },
+  mounted () {
+    this.fetchMangaData()
   }
 }
 </script>
@@ -54,8 +32,8 @@ export default {
 .playground {
   position: relative;
   width: auto;
-  height: 1000%;
-  background: @color-deep-gray;
+  height: 100%;
+  background: @color-white;
   // margin-top: 300px;
   .content {
     // background-color: @color-light-gray;
@@ -70,13 +48,5 @@ export default {
       background-color: #fff;
     }
   }
-}
-.flip-list-move {
-  transition: transform 0.5s;
-}
-
-.ghost {
-  opacity: 0.5;
-  background: #c8ebfb;
 }
 </style>

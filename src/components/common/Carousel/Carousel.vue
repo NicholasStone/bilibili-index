@@ -23,10 +23,6 @@ import { addResizeListener, removeResizeListener } from 'Utils/handle-resize'
 export default {
   name: 'Carousel',
   props: {
-    // height: {
-    //   type: Number,
-    //   default: 150
-    // },
     autoplay: {
       type: Boolean,
       default: true
@@ -34,15 +30,17 @@ export default {
     interval: {
       type: Number,
       default: 5000
-    }
+    },
+    contentWidth: Number,
+    contentHeight: Number
   },
   data () {
     return {
       frames: [],
       current: 0,
       timer: null,
-      height: 0,
-      width: 0
+      height: this.contentHeight || 0,
+      width: this.contentWidth || 0
     }
   },
   methods: {
@@ -56,9 +54,7 @@ export default {
       })
     },
     updateFramesLocation (prevIndex = 0) {
-      this.frames.forEach((frame) => {
-        frame.updateLocation(this.currentIndex, prevIndex)
-      })
+      this.frames.map(frame => frame.updateLocation(this.currentIndex, prevIndex))
     },
     setTimer () {
       this.timer = setInterval(() => this.next(), this.interval)
@@ -66,10 +62,17 @@ export default {
     clearTimer () {
       clearInterval(this.timer)
     },
-    updateSize ({ width, height }) {
+    handleResize ({ width, height }) {
       this.width = width
       this.height = height
-      this.frames.forEach((frame) => frame.updateSize(width, height))
+      this.frames.map(frame => frame.updateSize(width, height))
+    },
+    updateSize () {
+      this.frames.map(frame => frame.updateSize(this.width, this.height))
+    },
+    reload () {
+      this.mountFrames()
+      this.updateSize()
     }
   },
   computed: {
@@ -95,14 +98,15 @@ export default {
   },
   mounted () {
     this.mountFrames()
-    addResizeListener(this.$el, this.updateSize)
+    addResizeListener(this.$el, this.handleResize)
     this.$nextTick(() => {
       this.updateFramesLocation()
+      if (this.timer) this.clearTimer()
       this.setTimer()
     })
   },
   beforeDestroy () {
-    removeResizeListener(this.$el, this.updateSize)
+    removeResizeListener(this.$el, this.handleResize)
   }
 }
 </script>
@@ -111,8 +115,8 @@ export default {
   .blocking(100%, 100%);
   position: relative;
   overflow: hidden;
-  min-height: 150px;
-  min-width: 300px;
+  /*min-height: 150px;*/
+  /*min-width: 300px;*/
 
   .carousel-screens {
     position: relative;
@@ -139,7 +143,7 @@ export default {
   }
 
   .pagination {
-    .blocking(100px, 20px, flex);
+    .blocking(auto, 20px, flex);
     .p-absoluting(auto, auto, 12px, 12px);
     z-index: 10;
     justify-content: space-evenly;
@@ -151,6 +155,7 @@ export default {
       border-radius: 50%;
       border: 2px transparent solid;
       transition: all ease 200ms;
+      margin-left: 10px;
 
       &:hover{
         border-color: @color-white;

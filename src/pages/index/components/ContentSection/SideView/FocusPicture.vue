@@ -22,7 +22,7 @@ export default {
 .focus-picture {
   .blocking(100%, 100%);
   & > img {
-    .blocking(100%, 100%);
+    .blocking(100%);
     vertical-align: middle;
   }
 }

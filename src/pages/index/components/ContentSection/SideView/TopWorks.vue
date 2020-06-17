@@ -2,7 +2,7 @@
 <div class="work" v-if="!videoType">
   <div class="work__container" v-popover:[ref] @mouseenter="active = true" @mouseleave="active = false">
     <div class="work__ranking" :class="index <= 3 ? 'work__ranking--top3' : 'work__ranking--others'">{{index}}</div>
-    <a :class="['work__synopsis work__synopsis--response', {'work__synopsis--top': index === 1}]">
+    <a :class="['work__synopsis work__synopsis--response', {'work__synopsis--top': index === 1}]" :href="link">
       <div class="work__cover" v-if="showCover">
         <img :src="video.pic" :alt="video.title">
         <watch-later/>
@@ -42,7 +42,7 @@
 </div>
 <div v-else class="work work__container">
   <div class="work__ranking" :class="index <= 3 ? 'work__ranking--top3' : 'work__ranking--others'">{{index}}</div>
-  <a class="work__synopsis work__synopsis--response" :title="video.title">
+  <a class="work__synopsis work__synopsis--response" :title="video.title" :href="link">
     <span class="work__title hover-text-blue">{{video.title}}</span>
     <span class="work__subs work__subs--update">{{video.new_ep.index_show}}</span>
   </a>
@@ -80,6 +80,9 @@ export default {
   computed: {
     videoType () {
       return Object.prototype.hasOwnProperty.call(this.video, 'badge')
+    },
+    link () {
+      return this.videoType ? '//www.bilibili.com/bangumi/play/ss' + this.video.season_id : `//www.bilibili.com/video/${this.video.bvid}`
     }
   },
   filters: {

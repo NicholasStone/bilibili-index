@@ -1,50 +1,39 @@
 const express = require('express')
 const path = require('path')
+const bodyParser = require('body-parser')
+
 const proxy = require('./proxy')
 require('dotenv').config()
 
 module.exports = function (app) {
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: false }))
+  // app.use(bodyParser.raw())
+  // app.use(bodyParser.text())
   app.use(express.static(path.resolve(__dirname, 'public')))
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    next()
+  })
 
-  app.get('/api/*', (req, resp) => {
-    resp.set({
-      'Access-Control-Allow-Origin': process.env.DEV_ENV === 'local' ? 'http://localhost:8080' : process.env.REMOTE_PUBLIC_HOST,
-      'Access-Control-Allow-Credentials': true
-    })
+  app.all('/api/*', (req, resp) => {
     proxy(req, resp, 'http://api.bilibili.com/')
       .then(res => {
         resp.writeHead(res.statusCode, res.headers)
-        res.on('data', chunk => {
-          resp.write(chunk)
-        })
-        res.on('end', _ => {
-          resp.end()
-        })
+        res.on('data', chunk => resp.write(chunk))
+        res.on('end', () => resp.end())
       })
-      .catch(err => {
-        console.error(err)
-      })
+      .catch(err => console.error(err))
   })
-
-  app.get('/cdn/*', (req, resp) => {
+  app.all('/cdn/*', (req, resp) => {
     proxy(req, resp, 'http://i0.hdslb.com/')
       .then(res => {
         resp.writeHead(res.statusCode, res.headers)
-        res.on('data', chunk => {
-          resp.write(chunk)
-        })
-        res.on('end', _ => {
-          resp.end()
-        })
+        res.on('data', chunk => resp.write(chunk))
+        res.on('end', () => resp.end())
       })
-      .catch(err => {
-        console.error(err)
-      })
+      .catch(err => console.error(err))
   })
-  //
-  // app.get('/', (req, resp) => {
-  //   resp.redirect('/index.html')
-  // })
 
   app.get('/BoxItems', (req, resp) => {
     resp.redirect('/BoxItems.json')

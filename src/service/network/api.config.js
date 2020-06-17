@@ -55,13 +55,36 @@ export const apiList = {
         },
         adapter: (data) => data.list.slice(0, 10)
       },
-      slide_show: {
-        url: 'https://api.bilibili.com/pgc/operation/api/slideshow?position_id=104',
+      anime_timeline: {
+        url: 'https://api.bilibili.com/pgc/web/timeline/v2',
         method: 'GET',
         verify: false,
         params: {
-          position_id: '104 日漫，101国漫'
+          season_type: '1: 日漫,4: 国漫'
+        },
+        adapter: ({ timeline, latest }) => {
+          const result = []
+          result.push({
+            day_of_week: 0,
+            today: 0,
+            date: '0-0',
+            episodes: latest
+          })
+          // eslint-disable-next-line camelcase
+          for (const { date, episodes, day_of_week, is_today: today } of timeline) {
+            result.push({ day_of_week, today, date, episodes })
+          }
+          return result.sort((a, b) => a.day_of_week - b.day_of_week)
         }
+      },
+      slide_show: {
+        url: 'https://api.bilibili.com/pgc/operation/api/slideshow',
+        method: 'GET',
+        verify: false,
+        params: {
+          position_id: '101 国创, 102 好像也是国创，但没找到位置, 103 国创，也不知道在什么地方, 104 日番推荐, 105 = 106 国创相关, 107 日番列表'
+        },
+        adapter: data => Object.values(data)
       }
     },
     info: {
@@ -733,10 +756,39 @@ export const apiList = {
         comment: '获取在线人数'
       }
     }
+  },
+  manga: {
+    index: {
+      recommend_card: {
+        url: 'https://manga.bilibili.com/twirp/comic.v1.Comic/GetRecommendComics',
+        method: 'POST',
+        data: {
+          type: 1,
+          page_size: 12,
+          page_num: 1
+        },
+        common: '首页漫画 卡片',
+        adapter: ({ comics }) => comics
+      },
+      home_fans: {
+        url: 'https://manga.bilibili.com/twirp/comic.v1.Comic/HomeFans',
+        method: 'POST',
+        data: {
+          type: 1,
+          last_month_offset: 0
+        },
+        common: '首页漫画列表 月票'
+      },
+      home_hot: {
+        url: 'https://manga.bilibili.com/twirp/comic.v1.Comic/HomeHot',
+        method: 'POST',
+        data: {
+          type: '1 免费漫画, 2排行榜 飙升'
+        },
+        common: '热榜'
+      }
+    }
   }
-  // bangumi: {
-  //
-  // }
 }
 const apis = flatten(apiList, { maxDepth: 3 })
 export default apis

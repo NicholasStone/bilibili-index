@@ -110,6 +110,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .footer {
+  width: 100%;
   padding: 30px;
   background-color: #f6f9fa;
 

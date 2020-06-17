@@ -1,15 +1,16 @@
 import apis from 'Network/api.config'
 import section from 'Index/config/section'
 
-export default function requestOptions (apiName, params, config = {}) {
+export default function requestOptions (apiName, params, data, config = {}) {
   if (!apis[apiName]) throw TypeError(`API ${apiName} not found`)
 
-  const { url, method, params: requiredParams, adapter } = apis[apiName]
+  const { url, method, params: requiredParams, data: requiredData, adapter } = apis[apiName]
   const requestOption = {
     url,
     method,
     adapter,
     params: {},
+    data: {},
     ...config
   }
 
@@ -23,6 +24,20 @@ export default function requestOptions (apiName, params, config = {}) {
           requestOption.params[paramsKes] = params[paramsKes]
         } else {
           console.warn(`param ${paramsKes} required but not found`)
+        }
+      }
+    }
+  }
+
+  if (requiredData) {
+    if (!data) {
+      console.warn(`data for api ${apiName} is required but not found`)
+    } else {
+      for (const dataKey in requiredData) {
+        if (Object.prototype.hasOwnProperty.call(data, dataKey)) {
+          requestOption.data[dataKey] = data[dataKey]
+        } else {
+          console.warn(`param ${dataKey} required but not found`)
         }
       }
     }

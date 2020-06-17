@@ -1,11 +1,11 @@
 <template>
-  <carousel class="carousel-screen">
+  <carousel class="carousel-screen" ref="carousel">
     <carousel-item v-for="{img, blink, title} in content" :key="title">
       <a :href="blink" class="carousel-content bottom-shadow">
         <img
           class="carousel-content__image"
-         :src="img"
-         :alt="title">
+          :src="img"
+          :alt="title">
         <span class="carousel-content__title">{{title}}</span>
       </a>
     </carousel-item>
@@ -17,10 +17,10 @@ import { Carousel, CarouselItem } from 'Components/common/Carousel'
 
 export default {
   name: 'CarouselScreen',
+  inheritAttrs: false,
   props: {
     content: {
       type: Array,
-      required: true,
       validator: arr => arr.every(item => item.img && item.blink && item.title)
     }
   },
@@ -28,8 +28,10 @@ export default {
     Carousel,
     CarouselItem
   },
-  data () {
-    return {
+  watch: {
+    content (val) {
+      // 由于异步数据加载，必须重新挂载
+      if (val) this.$nextTick(() => this.$refs.carousel.reload())
     }
   }
 }
