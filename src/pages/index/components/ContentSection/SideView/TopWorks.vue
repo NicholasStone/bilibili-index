@@ -2,7 +2,7 @@
 <div class="work" v-if="!videoType">
   <div class="work__container" v-popover:[ref] @mouseenter="active = true" @mouseleave="active = false">
     <div class="work__ranking" :class="index <= 3 ? 'work__ranking--top3' : 'work__ranking--others'">{{index}}</div>
-    <a :class="['work__synopsis work__synopsis--response', {'work__synopsis--top': index === 1}]" :href="link">
+    <a class="work__synopsis" :href="link">
       <div class="work__cover" v-if="showCover">
         <img :src="video.pic" :alt="video.title">
         <watch-later/>

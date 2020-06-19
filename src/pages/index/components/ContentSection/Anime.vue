@@ -4,7 +4,7 @@
     <template v-slot:card-options>
       <a class="bangumi-timeline-entry" href="https://www.bilibili.com/anime/timeline/" target="_blank">新番时间表<i class="bilifont bili-icon_caozuo_qianwang"></i></a>
     </template>
-    <template v-slot:card-tabs>
+    <template v-slot:card-header-subs>
       <ul class="card-tabs">
         <li
           v-for="{name, index} in tabs"
@@ -97,55 +97,36 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .bangumi-timeline-entry {
-    .blocking(112px, 30px);
-    border: 1px solid @bilibili-blue;
-    border-radius: 2px;
-    color: @bilibili-blue;
-    line-height: 30px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: normal;
-    transition: all .2s;
-    &:hover {
-      background: @bilibili-blue;
-      color: @color-white;
-    }
+.bangumi-timeline-entry {
+  .blocking(112px, 30px);
+  border: 1px solid @bilibili-blue;
+  border-radius: 2px;
+  color: @bilibili-blue;
+  line-height: 30px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: normal;
+  transition: all .2s;
+  &:hover {
+    background: @bilibili-blue;
+    color: @color-white;
   }
+}
 
-  .card-tabs {
-    display: flex;
-    margin-left: 4px;
-    &__item {
-      .blocking(28px, 30px);
-      margin-right: 24px;
-      line-height: 30px;
-      cursor: pointer;
-
-      &--on {
-        color: @bilibili-blue;
-        border-bottom: 1px solid @bilibili-blue;
-      }
-    }
+.anime-slide {
+  height: 312px;
+  @media screen and (max-width: @screen-size-micro) {
+    height: 274px;
   }
+}
 
-  .anime-slide {
-    height: 312px;
-    @media screen and (max-width: @screen-size-micro) {
-      height: 274px;
-    }
-  }
-
-  .card-content {
-    .blocking(100%, 100%, flex);
-    .flexing(wrap, flex-start, flex-start, flex-start);
-  }
+.card-content {
+  .blocking(100%, 100%, flex);
+  .flexing(wrap, flex-start, flex-start, flex-start);
+}
 </style>
 <style lang="less">
-  .anime .list-box {
-    height: 376px !important;
-    @media screen and (max-width: @screen-size-micro) {
-      height: 332px !important;
-    }
-  }
+.anime .list-box {
+  height: 376px !important;
+}
 </style>

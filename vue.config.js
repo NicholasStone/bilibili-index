@@ -11,8 +11,8 @@ const devServer = {
 }
 
 if (process.env.DEV_ENV !== 'local'){
-  devServer.host = `${process.env.REMOTE_PUBLIC_HOST}`
-  devServer.public = process.env.REMOTE_PUBLIC_HOST
+  devServer.host = '0.0.0.0'
+  devServer.public = process.env.REMOTE_PUBLIC_HOST + ':' + process.env.PORT
 }
 
 module.exports = {

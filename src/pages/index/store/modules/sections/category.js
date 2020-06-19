@@ -4,13 +4,14 @@ import {
   DOUGA,
   GAMES,
   GUOCHUANG,
-  INFORMATION,
+  INFORMATION, MANGA,
   MOVIE,
   MUSIC
 } from 'Index/config/section'
 import FocusPicture from 'Index/components/ContentSection/SideView/FocusPicture'
 import Anime from 'Index/components/ContentSection/Anime'
 import GuoChuang from 'Index/components/ContentSection/GuoChuang'
+import Manga from 'Index/components/ContentSection/Manga'
 /**
  * {
  *    title: 分区标题
@@ -67,5 +68,6 @@ export default [
     }
   },
   { title: '动漫', name: ANIME, icon: 'anime', order: 6, component: Anime },
-  { title: '国创', name: GUOCHUANG, icon: 'guochuang', order: 7, component: GuoChuang }
+  { title: '国创', name: GUOCHUANG, icon: 'guochuang', order: 7, component: GuoChuang },
+  { title: '漫画', name: MANGA, order: 8, component: Manga }
 ]

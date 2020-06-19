@@ -1,14 +1,22 @@
 <template>
-  <span class="num-bubble" v-if="num">{{ num >= 100 ? '99+' : num }}</span>
+  <span class="num-bubble">
+    <slot>{{content}}</slot>
+  </span>
 </template>
 
 <script>
 export default {
   name: 'NumBubble',
   props: {
-    num: {
-      type: Number,
+    message: {
+      type: [Number, String],
       default: 0
+    }
+  },
+  computed: {
+    content () {
+      if (typeof this.message === 'number') return this.message >= 100 ? '99+' : this.message
+      return this.message
     }
   }
 }

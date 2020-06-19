@@ -8,7 +8,7 @@
             {{section.title}}
           </a>
           <div class="card-view__header-tabs">
-            <slot name="card-tabs"></slot>
+            <slot name="card-header-subs"></slot>
           </div>
         </div>
         <div class="card-view__header-options">
@@ -37,7 +37,7 @@
       <header class="side-view__header">
         <template v-if="sideTitle">{{sideTitle}}</template>
         <template v-else>
-          排行榜
+          <div class="side-view__header-title"><span style="margin-right: 12px">排行榜</span><slot name="side-header-subs"></slot></div>
           <a href="#" class="side-view__header-btn">
             更多<i class="bilifont bili-icon_caozuo_qianwang"></i>
           </a>
@@ -277,6 +277,10 @@ export default {
     font-size: 20px;
     line-height: 36px;
     margin-bottom: 16px;
+
+    &-title {
+      display: flex;
+    }
 
     &-btn {
       .blocking(auto, 22px, flex);

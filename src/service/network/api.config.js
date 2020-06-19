@@ -777,7 +777,8 @@ export const apiList = {
           type: 1,
           last_month_offset: 0
         },
-        common: '首页漫画列表 月票'
+        common: '首页漫画列表 月票',
+        adapter: ({ comics }) => comics.slice(0, 14)
       },
       home_hot: {
         url: 'https://manga.bilibili.com/twirp/comic.v1.Comic/HomeHot',
@@ -785,7 +786,8 @@ export const apiList = {
         data: {
           type: '1 免费漫画, 2排行榜 飙升'
         },
-        common: '热榜'
+        common: '热榜',
+        adapter: data => Object.values(data)
       }
     }
   }

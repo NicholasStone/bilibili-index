@@ -15,7 +15,7 @@
         <template v-slot:link>
           <a href="#">消息</a>
           <div class="bubble">
-            <num-bubble :num="unreadMessage" v-if="unreadMessage"/>
+            <num-bubble :message="unreadMessage" v-if="unreadMessage"/>
           </div>
         </template>
         <template v-slot:dialog><user-message /></template>
@@ -24,7 +24,7 @@
         <template v-slot:link>
           <a href="#">动态</a>
           <div class="bubble">
-            <num-bubble :num="unreadDynamic" v-if="unreadDynamic"/>
+            <num-bubble :message="unreadDynamic" v-if="unreadDynamic"/>
           </div>
         </template>
         <template v-slot:dialog><user-dynamic /></template>

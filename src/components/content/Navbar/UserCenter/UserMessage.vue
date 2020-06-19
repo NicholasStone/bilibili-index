@@ -6,7 +6,7 @@
       :key="key"
       :href="link">
       {{ title }}
-      <num-bubble v-if="message[key]" :num="message[key]"></num-bubble>
+      <num-bubble v-if="message[key]" :message="message[key]"></num-bubble>
     </a>
   </div>
 </template>

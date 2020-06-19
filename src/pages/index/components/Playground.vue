@@ -1,30 +1,30 @@
 <template>
   <div class="playground">
     <div class="content wrap">
-      <manga-card v-bind="comics"/>
+      <manga/>
+<!--      <top-comic :comic="comic[1]" :index="1" />-->
     </div>
   </div>
 </template>
 <script>
-import MangaCard from 'Index/components/ContentSection/CardView/MangaCard'
+import Manga from 'Index/components/ContentSection/Manga'
+import TopComic from 'Index/components/ContentSection/SideView/TopComic'
 import request from 'Network/request'
 export default {
   name: 'Playground',
   // eslint-disable-next-line
-  components: { MangaCard },
+  components: {TopComic, Manga },
   data () {
     return {
-      comics: null
+      comic: null
     }
   },
   computed: {},
   methods: {
-    async fetchMangaData () {
-      this.comics = (await request({ api: 'manga.index.recommend_card', data: { type: 1, page_size: 12, page_num: 1 } }))[0]
-    }
+
   },
-  mounted () {
-    this.fetchMangaData()
+  async mounted () {
+    this.comic = await request({ api: 'manga.index.home_fans', data: { type: 1, last_month_offset: 0 } })
   }
 }
 </script>
@@ -37,16 +37,10 @@ export default {
   // margin-top: 300px;
   .content {
     // background-color: @color-light-gray;
+    margin-top: 50px;
+    /*width: 265px;*/
     height: 100%;
     position: relative;
-    li {
-      width:50px;
-      height:30px;
-      line-height: 30px;
-      text-align: center;
-      border: 1px solid gray;
-      background-color: #fff;
-    }
   }
 }
 </style>

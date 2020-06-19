@@ -36,6 +36,7 @@ export const DOUGA = 'douga'
 export const SOAP_OPERA = 'soap_opera'
 export const TV_SHOW = 'tv_show'
 export const DOCUMENTARY = 'documentary'
+export const MANGA = 'manga'
 
 export default {
   [ENTERTAINMENT]: 5,

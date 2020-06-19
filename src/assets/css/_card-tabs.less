@@ -1,0 +1,16 @@
+.card-tabs {
+  display: flex;
+  margin-left: 4px;
+  &__item {
+    .blocking(auto, 30px);
+    position: relative;
+    margin-right: 24px;
+    line-height: 30px;
+    cursor: pointer;
+
+    &--on {
+      color: @bilibili-blue;
+      border-bottom: 1px solid @bilibili-blue;
+    }
+  }
+}
