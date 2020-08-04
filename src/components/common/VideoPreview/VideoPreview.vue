@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     cover () {
-      return this.video.pic
+      return this.video.pic + '@257w_145h_1c_100q.webp'
     },
     view () {
       return this.shorted(this.video.stat.view)

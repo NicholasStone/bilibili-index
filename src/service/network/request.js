@@ -3,16 +3,16 @@ import { flatten, unflatten } from 'flat'
 
 import requestOptions from './api'
 
-export default function request ({ api, params, data, onRequest, onResponse }) {
+export default function request ({ api, params, data }, onRequest = null, onResponse = null) {
   const { adapter, ...options } = requestOptions(api, params, data)
 
   const instance = axios.create({
     baseURL: window.location.origin,
-    timeout: 5000
+    timeout: 30000
   })
 
   instance.interceptors.request.use(config => {
-    if (onRequest) onResponse()
+    if (onRequest) onRequest()
     config.url = window.location.origin + '/api/' + config.url
     // config.url = 'http://localhost:8080' + '/api/' + config.url
     return config

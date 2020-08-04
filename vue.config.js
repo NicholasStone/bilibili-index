@@ -36,19 +36,7 @@ module.exports = {
       template: 'public/index.html',
       filename: 'index.html',
       chunk: ['chunk-vendors', 'chunk-common', 'index'],
-    },
-    timeline: {
-      entry: 'src/pages/timeline/main.js',
-      template: 'public/index.html',
-      filename: 'timeline.html',
-      chunk: ['chunk-vendors', 'chunk-common', 'index'],
-    },
-    history: {
-      entry: 'src/pages/history/main.js',
-      template: 'public/index.html',
-      filename: 'timeline.html',
-      chunk: ['chunk-vendors', 'chunk-common', 'index'],
-    },
+    }
   },
   devServer,
   configureWebpack: {

@@ -16,7 +16,7 @@
       </ul>
     </template>
     <template v-slot:card-content>
-      <div class="card-content">
+      <div :class="['card-content', {nodata: !renderingCards.length}]" >
         <timeline-card
           v-for="anime in renderingCards"
           :key="anime.title"
@@ -57,7 +57,7 @@ export default {
           }
         }
       },
-      timeline: null,
+      timeline: [],
       showing: 0,
       tabs: [
         { name: '最新', index: 0 },
@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     renderingCards () {
-      if (!this.timeline) return
+      if (!this.timeline.length) return []
       return this.timeline[this.showing].episodes
     }
   },
@@ -128,5 +128,8 @@ export default {
 <style lang="less">
 .anime .list-box {
   height: 376px !important;
+}
+.nodata {
+  background:center no-repeat url('https://s1.hdslb.com/bfs/static/jinkela/international-home/asserts/bgm-nodata.png');
 }
 </style>

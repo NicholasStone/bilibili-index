@@ -16,7 +16,7 @@
       </ul>
     </template>
     <template v-slot:card-content>
-      <div class="card-content">
+      <div :class="['card-content', {nodata: !renderingCards.length}]">
         <timeline-card
           v-for="anime in renderingCards"
           :key="anime.episode_id"
@@ -55,7 +55,7 @@ export default {
         title: '国创',
         icon: GUOCHUANG
       },
-      timeline: null,
+      timeline: [],
       showing: 0,
       tabs: [
         { name: '最新', index: 0 },
@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     renderingCards () {
-      if (!this.timeline) return
+      if (!this.timeline.length) return []
       return this.timeline[this.showing].episodes
     }
   },

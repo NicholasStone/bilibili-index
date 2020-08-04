@@ -1,5 +1,5 @@
 <template>
-  <div class="content-section" :id="id">
+  <div class="content-section" :id="id" :ref="id">
     <div class="card-view">
       <header class="card-view__header">
         <div class="card-view__header-left">
@@ -13,7 +13,7 @@
         </div>
         <div class="card-view__header-options">
           <slot name="card-options">
-            <button class="card-view__header-btn">
+            <button class="card-view__header-btn card-view__header-btn--reload" @click="fetchSectionData(cardConfig, 'cards')">
               <i :class="['bilifont', 'bili-icon_caozuo_huanyihuan', {'loading': loading}]"></i>换一换
             </button>
             <a href="#" target="_blank" class="card-view__header-more card-view__header-btn">
@@ -69,8 +69,10 @@ import TopWorks from 'Index/components/ContentSection/SideView/TopWorks'
 import VideoCard from 'Index/components/ContentSection/CardView/VideoCard'
 
 import request from 'Network/request'
+import { addIntersectionListener, unObserve } from 'Utils/handle-intersect'
 import { generateSectionId } from 'Utils/utils'
 import { getRid } from 'Network/api'
+import { debounce } from 'lodash'
 
 export default {
   name: 'ContentSection',
@@ -95,7 +97,6 @@ export default {
   components: { SideView, CardView, TopWorks, VideoCard },
   data () {
     return {
-      // TODO: 加载时 loading
       loading: false,
       side: [],
       cards: [],
@@ -140,18 +141,26 @@ export default {
   methods: {
     async fetchSectionData (config, section) {
       const options = config && config.options ? config.options : this.default_config[section]
-      // const adapter = options && options.adapter ? options.adapter : handler
-      // const response = await request(options)
-      // this[section] = adapter(response)
-      this[section] = await request(options)
+      const debounceReload = debounce(() => { this.loading = !this.loading }, 300)
+      this[section] = await request(options, debounceReload, debounceReload)
+    },
+    loadContent () {
+      if (this.fetchCardData) this.fetchSectionData(this.cardConfig, 'cards')
+      // 在没有指定特殊 component 和 允许请求数据的情况下可以请求数据，即!this.sideComponent 与 this.fetchSideData 同时为 true
+      if (!this.sideComponent && this.fetchSideData) {
+        this.fetchSectionData(this.sideConfig, 'side')
+      }
+    },
+    lazyLoad ({ isIntersecting }) {
+      isIntersecting && console.log(`load ${this.id}`)
+      if (isIntersecting && !this.cards.length) this.loadContent()
     }
   },
   mounted () {
-    if (this.fetchCardData) this.fetchSectionData(this.cardConfig, 'cards')
-    // 在没有指定特殊 component 和 允许请求数据的情况下可以请求数据，即!this.sideComponent 与 this.fetchSideData 同时为 true
-    if (!this.sideComponent && this.fetchSideData) {
-      this.fetchSectionData(this.sideConfig, 'side')
-    }
+    addIntersectionListener(this.$refs[this.id], this.lazyLoad)
+  },
+  beforeDestroy () {
+    unObserve(this.$refs[this.id])
   }
 }
 </script>
@@ -231,6 +240,14 @@ export default {
       font-size: @font-size-small;
       color:#505050;
       min-width: 52px;
+      &--reload{
+        i.bilifont {
+          transition: transform ease 500ms;
+        }
+        &:hover > i.bilifont{
+          transform: rotate(-360deg);
+        }
+      }
     }
 
     &-options {

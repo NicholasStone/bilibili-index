@@ -1,29 +1,15 @@
-# bilibili
+# 仿 bilibili 项目
 
-## Project setup
-```
-npm install
-```
+## 使用 Vue 框架开发
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 完成功能
+### 主站主页
+1. 登陆登出功能
+2. 导航栏
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## TODOs
+1. reload (完成)
+2. lazy load -> 使用 intersection observer
+3. 登陆及页面
+4. 登陆后动态

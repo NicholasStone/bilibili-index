@@ -35,14 +35,14 @@
 </template>
 
 <script>
-  import Avatar from 'Components/common/Avatar/Avatar'
+import Avatar from 'Components/common/Avatar/Avatar'
 
-  export default {
-    name: 'TimelineDialog',
-    components: {
-      Avatar
-    }
+export default {
+  name: 'TimelineDialog',
+  components: {
+    Avatar
   }
+}
 </script>
 
 <style lang="less" scoped>
